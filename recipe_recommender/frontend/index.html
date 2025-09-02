@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🍽️ Recipe Recommender - AI-Powered Cooking Assistant</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#fef7ee',
+                            100: '#fdedd3',
+                            200: '#fbd8a5',
+                            300: '#f8bd6c',
+                            400: '#f59534',
+                            500: '#f37316',
+                            600: '#e4570c',
+                            700: '#bd400c',
+                            800: '#953312',
+                            900: '#782c12',
+                        },
+                        sudanese: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            200: '#bbf7d0',
+                            300: '#86efac',
+                            400: '#4ade80',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            800: '#166534',
+                            900: '#14532d',
+                        }
+                    },
+                    fontFamily: {
+                        'display': ['Inter', 'system-ui', 'sans-serif'],
+                        'body': ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-in-out',
+                        'slide-up': 'slideUp 0.3s ease-out',
+                        'bounce-subtle': 'bounceSubtle 2s infinite',
+                        'pulse-slow': 'pulse 3s infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        bounceSubtle: {
+                            '0%, 20%, 50%, 80%, 100%': { transform: 'translateY(0)' },
+                            '40%': { transform: 'translateY(-4px)' },
+                            '60%': { transform: 'translateY(-2px)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Meta Tags for Social Sharing -->
+    <meta name="description" content="AI-powered recipe recommendations with cultural diversity and sustainability focus. Find recipes using your available ingredients.">
+    <meta property="og:title" content="Recipe Recommender - Smart Cooking Assistant">
+    <meta property="og:description" content="Turn your ingredients into delicious meals with AI-powered recipe suggestions">
+    <meta property="og:type" content="website">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍽️</text></svg>">
+    
+    <!-- Preload Critical Resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="bg-gradient-to-br from-orange-50 via-white to-green-50 min-h-screen font-body">
+    <!-- Navigation Header -->
+    <nav class="bg-white/80 backdrop-blur-lg border-b border-orange-100 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-3">
+                    <div class="text-3xl animate-bounce-subtle">🍽️</div>
+                    <h1 class="text-xl font-bold text-gray-900">Recipe Recommender</h1>
+                    <span class="hidden sm:inline-block px-2 py-1 bg-primary-100 text-primary-700 text-xs rounded-full font-medium">
+                        AI-Powered
+                    </span>
+                </div>
+                
+                <!-- Navigation Actions -->
+                <div class="flex items-center space-x-4">
+                    <button id="pantryToggle" class="flex items-center space-x-2 px-3 py-2 bg-sudanese-500 text-white rounded-lg hover:bg-sudanese-600 transition-colors duration-200">
+                        <span>🛒</span>
+                        <span class="hidden sm:inline">Pantry</span>
+                    </button>
+                    
+                    <button id="themeToggle" class="p-2 text-gray-600 hover:text-gray-900 transition-colors duration-200">
+                        <span class="text-xl">🌙</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Hero Section -->
+        <section class="text-center mb-12 animate-fade-in">
+            <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                Turn Your Ingredients Into
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-500 to-sudanese-500">
+                    Delicious Meals
+                </span>
+            </h2>
+            <p class="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+                AI-powered recipe suggestions with cultural diversity and sustainability focus. 
+                Featuring authentic Sudanese cuisine alongside global favorites.
+            </p>
+            
+            <!-- Zero Hunger Badge -->
+            <div class="inline-flex items-center space-x-2 bg-gradient-to-r from-green-500 to-blue-500 text-white px-4 py-2 rounded-full text-sm font-medium mb-8">
+                <span>🎯</span>
+                <span>Supporting UN SDG 2: Zero Hunger</span>
+            </div>
+        </section>
+
+        <!-- Recipe Search Section -->
+        <section class="bg-white rounded-2xl shadow-xl p-8 mb-12 border border-orange-100">
+            <div class="max-w-4xl mx-auto">
+                <!-- Ingredient Input -->
+                <div class="mb-6">
+                    <label for="ingredientInput" class="block text-lg font-semibold text-gray-900 mb-3">
+                        What ingredients do you have? 🥕
+                    </label>
+                    <div class="relative">
+                        <input 
+                            type="text" 
+                            id="ingredientInput" 
+                            placeholder="Type ingredients (e.g., chicken, tomatoes, onions)..."
+                            class="w-full px-6 py-4 text-lg border-2 border-gray-200 rounded-xl focus:border-primary-500 focus:ring-4 focus:ring-primary-100 transition-all duration-200 outline-none"
+                            autocomplete="off"
+                        >
+                        <button id="addIngredientBtn" class="absolute right-3 top-1/2 transform -translate-y-1/2 bg-primary-500 text-white px-4 py-2 rounded-lg hover:bg-primary-600 transition-colors duration-200">
+                            Add
+                        </button>
+                    </div>
+                    
+                    <!-- Ingredient Suggestions -->
+                    <div id="ingredientSuggestions" class="mt-3 flex flex-wrap gap-2"></div>
+                </div>
+
+                <!-- Selected Ingredients Display -->
+                <div id="selectedIngredients" class="mb-6">
+                    <div class="flex flex-wrap gap-2" id="ingredientTags"></div>
+                </div>
+
+                <!-- Search Options -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                    <!-- Cuisine Preference -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Cuisine Style</label>
+                        <select id="cuisineSelect" class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:border-primary-500 focus:ring-2 focus:ring-primary-100 transition-all duration-200">
+                            <option value="any">Any Cuisine</option>
+                            <option value="sudanese">🇸🇩 Sudanese</option>
+                            <option value="global">🌍 Global</option>
+                            <option value="mediterranean">🌊 Mediterranean</option>
+                            <option value="asian">🥢 Asian</option>
+                            <option value="indian">🍛 Indian</option>
+                            <option value="italian">🍝 Italian</option>
+                        </select>
+                    </div>
+
+                    <!-- Difficulty Level -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Difficulty Level</label>
+                        <select id="difficultySelect" class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:border-primary-500 focus:ring-2 focus:ring-primary-100 transition-all duration-200">
+                            <option value="1">🟢 Very Easy</option>
+                            <option value="2">🟡 Easy</option>
+                            <option value="3" selected>🟠 Medium</option>
+                            <option value="4">🔴 Hard</option>
+                            <option value="5">⚫ Expert</option>
+                        </select>
+                    </div>
+
+                    <!-- Max Cooking Time -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Max Time (minutes)</label>
+                        <select id="maxTimeSelect" class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:border-primary-500 focus:ring-2 focus:ring-primary-100 transition-all duration-200">
+                            <option value="15">⚡ 15 min</option>
+                            <option value="30">🕐 30 min</option>
+                            <option value="60" selected>🕑 1 hour</option>
+                            <option value="120">🕕 2 hours</option>
+                            <option value="999">⏰ Any time</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Dietary Restrictions -->
+                <div class="mb-6">
+                    <label class="block text-sm font-medium text-gray-700 mb-3">Dietary Preferences</label>
+                    <div class="flex flex-wrap gap-3">
+                        <label class="flex items-center space-x-2 cursor-pointer">
+                            <input type="checkbox" value="vegetarian" class="dietary-checkbox rounded text-primary-500 focus:ring-primary-500">
+                            <span class="text-sm">🌱 Vegetarian</span>
+                        </label>
+                        <label class="flex items-center space-x-2 cursor-pointer">
+                            <input type="checkbox" value="vegan" class="dietary-checkbox rounded text-primary-500 focus:ring-primary-500">
+                            <span class="text-sm">🌿 Vegan</span>
+                        </label>
+                        <label class="flex items-center space-x-2 cursor-pointer">
+                            <input type="checkbox" value="gluten-free" class="dietary-checkbox rounded text-primary-500 focus:ring-primary-500">
+                            <span class="text-sm">🌾 Gluten-Free</span>
+                        </label>
+                        <label class="flex items-center space-x-2 cursor-pointer">
+                            <input type="checkbox" value="dairy-free" class="dietary-checkbox rounded text-primary-500 focus:ring-primary-500">
+                            <span class="text-sm">🥛 Dairy-Free</span>
+                        </label>
+                        <label class="flex items-center space-x-2 cursor-pointer">
+                            <input type="checkbox" value="low-carb" class="dietary-checkbox rounded text-primary-500 focus:ring-primary-500">
+                            <span class="text-sm">🥗 Low-Carb</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Search Button -->
+                <div class="text-center">
+                    <button id="searchRecipesBtn" class="bg-gradient-to-r from-primary-500 to-primary-600 text-white px-8 py-4 rounded-xl text-lg font-semibold hover:from-primary-600 hover:to-primary-700 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none">
+                        <span id="searchBtnText">🔍 Find Amazing Recipes</span>
+                        <div id="searchSpinner" class="hidden inline-flex items-center">
+                            <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                            </svg>
+                            Searching...
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recipe Results Section -->
+        <section id="recipeResults" class="hidden">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-bold text-gray-900">Recipe Suggestions</h3>
+                <div id="resultStats" class="text-sm text-gray-600"></div>
+            </div>
+            
+            <div id="recipeGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                <!-- Recipe cards will be inserted here -->
+            </div>
+            
+            <!-- Load More Button -->
+            <div class="text-center">
+                <button id="loadMoreBtn" class="hidden px-6 py-3 border border-primary-500 text-primary-500 rounded-lg hover:bg-primary-50 transition-colors duration-200">
+                    Load More Recipes
+                </button>
+            </div>
+        </section>
+
+        <!-- Pantry Management Modal -->
+        <div id="pantryModal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+            <div class="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+                <div class="p-6 border-b border-gray-200">
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-xl font-bold text-gray-900">🛒 My Pantry</h3>
+                        <button id="closePantryBtn" class="text-gray-400 hover:text-gray-600 text-2xl">&times;</button>
+                    </div>
+                    <p class="text-gray-600 mt-2">Manage ingredients you frequently cook with</p>
+                </div>
+                
+                <div class="p-6">
+                    <!-- Add Pantry Item -->
+                    <div class="mb-6">
+                        <div class="flex space-x-3">
+                            <input 
+                                type="text" 
+                                id="pantryItemInput" 
+                                placeholder="Add ingredient to pantry..."
+                                class="flex-1 px-4 py-2 border border-gray-200 rounded-lg focus:border-sudanese-500 focus:ring-2 focus:ring-sudanese-100 transition-all duration-200"
+                            >
+                            <button id="addToPantryBtn" class="px-4 py-2 bg-sudanese-500 text-white rounded-lg hover:bg-sudanese-600 transition-colors duration-200">
+                                Add
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Pantry Items List -->
+                    <div id="pantryItemsList" class="space-y-2">
+                        <!-- Pantry items will be inserted here -->
+                    </div>
+                    
+                    <!-- Quick Add Common Ingredients -->
+                    <div class="mt-6">
+                        <h4 class="text-sm font-medium text-gray-700 mb-3">Quick Add Common Ingredients:</h4>
+                        <div class="flex flex-wrap gap-2" id="commonIngredients">
+                            <!-- Common ingredient buttons will be inserted here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recipe Detail Modal -->
+        <div id="recipeModal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+            <div class="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+                <div id="recipeModalContent">
+                    <!-- Recipe details will be inserted here -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer with Zero Hunger Badge -->
+    <footer class="bg-white border-t border-gray-200 py-8 mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+                <div class="flex items-center space-x-4">
+                    <div class="text-2xl">🍽️</div>
+                    <div>
+                        <h4 class="font-semibold text-gray-900">Recipe Recommender</h4>
+                        <p class="text-sm text-gray-600">AI-powered cooking assistant</p>
+                    </div>
+                </div>
+                
+                <!-- Zero Hunger Initiative -->
+                <div class="flex items-center space-x-3 bg-gradient-to-r from-green-50 to-blue-50 px-4 py-2 rounded-lg border border-green-200">
+                    <div class="w-8 h-8 bg-gradient-to-r from-green-500 to-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm">
+                        2
+                    </div>
+                    <div class="text-sm">
+                        <div class="font-medium text-gray-900">Supporting Zero Hunger</div>
+                        <div class="text-gray-600">UN Sustainable Development Goal #2</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-6 pt-6 border-t border-gray-200 text-center text-sm text-gray-500">
+                <p>Reducing food waste through smart recipe recommendations • Cultural diversity through authentic cuisine</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Success Toast Notification -->
+    <div id="successToast" class="hidden fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 animate-slide-up">
+        <div class="flex items-center space-x-2">
+            <span class="text-lg">✅</span>
+            <span id="toastMessage">Success!</span>
+        </div>
+    </div>
+
+    <!-- Error Toast Notification -->
+    <div id="errorToast" class="hidden fixed top-4 right-4 bg-red-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 animate-slide-up">
+        <div class="flex items-center space-x-2">
+            <span class="text-lg">❌</span>
+            <span id="errorMessage">Something went wrong!</span>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+    
+    <!-- Service Worker for PWA functionality -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(function(registration) {
+                        console.log('ServiceWorker registration successful');
+                    })
+                    .catch(function(err) {
+                        console.log('ServiceWorker registration failed');
+                    });
+            });
+        }
+    </script>
+
+    <!-- Analytics and Performance Monitoring -->
+    <script>
+        // Simple performance monitoring
+        window.addEventListener('load', function() {
+            const loadTime = performance.timing.loadEventEnd - performance.timing.navigationStart;
+            console.log(`Page load time: ${loadTime}ms`);
+            
+            // Track core web vitals
+            if ('web-vital' in window) {
+                // This would integrate with real analytics in production
+                console.log('Core Web Vitals tracking enabled');
+            }
+        });
+
+        // Error tracking
+        window.addEventListener('error', function(e) {
+            console.error('JavaScript error:', e.error);
+            // In production, this would send to error tracking service
+        });
+
+        // Track user interactions for UX improvements
+        document.addEventListener('click', function(e) {
+            if (e.target.matches('[data-track]')) {
+                const action = e.target.getAttribute('data-track');
+                console.log(`User interaction: ${action}`);
+                // In production, this would send to analytics
+            }
+        });
+    </script>
+
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Recipe Recommender",
+        "description": "AI-powered recipe recommendations with cultural diversity and sustainability focus",
+        "applicationCategory": "Lifestyle",
+        "operatingSystem": "Any",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "author": {
+            "@type": "Organization", 
+            "name": "Recipe Recommender Team"
+        },
+        "featureList": [
+            "AI-powered recipe suggestions",
+            "Cultural cuisine integration",
+            "Pantry management",
+            "Dietary restriction support",
+            "Sustainability focus"
+        ]
+    }
+    </script>
+
+    <!-- Accessibility improvements -->
+    <script>
+        // Enhanced keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            // Escape key closes modals
+            if (e.key === 'Escape') {
+                const modals = document.querySelectorAll('.modal-open');
+                modals.forEach(modal => modal.classList.add('hidden'));
+            }
+            
+            // Enter key on recipe cards opens details
+            if (e.key === 'Enter' && e.target.matches('.recipe-card')) {
+                e.target.click();
+            }
+        });
+
+        // Focus management for modals
+        function trapFocus(element) {
+            const focusableElements = element.querySelectorAll(
+                'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+            );
+            const firstFocusable = focusableElements[0];
+            const lastFocusable = focusableElements[focusableElements.length - 1];
+
+            element.addEventListener('keydown', function(e) {
+                if (e.key === 'Tab') {
+                    if (e.shiftKey) {
+                        if (document.activeElement === firstFocusable) {
+                            lastFocusable.focus();
+                            e.preventDefault();
+                        }
+                    } else {
+                        if (document.activeElement === lastFocusable) {
+                            firstFocusable.focus();
+                            e.preventDefault();
+                        }
+                    }
+                }
+            });
+        }
+
+        // Apply focus trapping to modals when they open
+        const observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                    const target = mutation.target;
+                    if (target.id === 'pantryModal' || target.id === 'recipeModal') {
+                        if (!target.classList.contains('hidden')) {
+                            trapFocus(target);
+                            // Focus first focusable element
+                            const firstFocusable = target.querySelector('button, [href], input, select, textarea');
+                            if (firstFocusable) firstFocusable.focus();
+                        }
+                    }
+                }
+            });
+        });
+
+        observer.observe(document.body, {
+            attributes: true,
+            subtree: true,
+            attributeFilter: ['class']
+        });
+
+        // Announce dynamic content changes to screen readers
+        function announceToScreenReader(message) {
+            const announcement = document.createElement('div');
+            announcement.setAttribute('aria-live', 'polite');
+            announcement.setAttribute('aria-atomic', 'true');
+            announcement.className = 'sr-only';
+            announcement.textContent = message;
+            document.body.appendChild(announcement);
+            
+            setTimeout(() => {
+                document.body.removeChild(announcement);
+            }, 1000);
+        }
+
+        // Export for use in script.js
+        window.announceToScreenReader = announceToScreenReader;
+    </script>
+</body>
+</html>
