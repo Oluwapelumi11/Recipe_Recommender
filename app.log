@@ -1,0 +1,238 @@
+2025-09-02 11:42:57,305 - recipe_recommender.backend.database - INFO - Initializing database...
+2025-09-02 11:42:57,311 - recipe_recommender.backend.database - INFO - Database schema created successfully
+2025-09-02 11:42:57,311 - recipe_recommender.backend.app - INFO - Database initialized successfully
+2025-09-02 11:44:39,363 - recipe_recommender.backend.database - INFO - Initializing database...
+2025-09-02 11:44:39,366 - recipe_recommender.backend.database - INFO - Database schema created successfully
+2025-09-02 11:44:39,366 - recipe_recommender.backend.app - INFO - Database initialized successfully
+2025-09-02 11:44:39,367 - recipe_recommender.backend.services.ai_service - INFO - AI Recipe Service initialized with Gemini model: gemini-pro
+2025-09-02 11:44:39,372 - recipe_recommender.backend.app - INFO - Flask application initialized successfully
+2025-09-02 11:44:39,373 - recipe_recommender.backend.database - INFO - Initializing database...
+2025-09-02 11:44:39,373 - recipe_recommender.backend.database - INFO - Database schema created successfully
+2025-09-02 11:44:39,374 - recipe_recommender.backend.app - INFO - Database initialized successfully
+2025-09-02 11:44:39,374 - recipe_recommender.backend.services.ai_service - INFO - AI Recipe Service initialized with Gemini model: gemini-pro
+2025-09-02 11:44:39,379 - recipe_recommender.backend.app - INFO - Flask application initialized successfully
+2025-09-02 11:44:39,476 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.110:5000
+2025-09-02 11:44:39,476 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-09-02 11:44:39,478 - werkzeug - INFO -  * Restarting with stat
+2025-09-02 11:44:40,495 - recipe_recommender.backend.database - INFO - Initializing database...
+2025-09-02 11:44:40,504 - recipe_recommender.backend.database - INFO - Database schema created successfully
+2025-09-02 11:44:40,504 - recipe_recommender.backend.app - INFO - Database initialized successfully
+2025-09-02 11:44:40,504 - recipe_recommender.backend.services.ai_service - INFO - AI Recipe Service initialized with Gemini model: gemini-pro
+2025-09-02 11:44:40,509 - recipe_recommender.backend.app - INFO - Flask application initialized successfully
+2025-09-02 11:44:40,511 - recipe_recommender.backend.database - INFO - Initializing database...
+2025-09-02 11:44:40,511 - recipe_recommender.backend.database - INFO - Database schema created successfully
+2025-09-02 11:44:40,511 - recipe_recommender.backend.app - INFO - Database initialized successfully
+2025-09-02 11:44:40,511 - recipe_recommender.backend.services.ai_service - INFO - AI Recipe Service initialized with Gemini model: gemini-pro
+2025-09-02 11:44:40,516 - recipe_recommender.backend.app - INFO - Flask application initialized successfully
+2025-09-02 11:44:40,532 - werkzeug - WARNING -  * Debugger is active!
+2025-09-02 11:44:40,534 - werkzeug - INFO -  * Debugger PIN: 683-997-820
+2025-09-02 11:46:18,315 - werkzeug - INFO - 127.0.0.1 - - [02/Sep/2025 11:46:18] "GET / HTTP/1.1" 200 -
+2025-09-02 11:46:18,357 - werkzeug - INFO - 127.0.0.1 - - [02/Sep/2025 11:46:18] "[33mGET /script.js HTTP/1.1[0m" 404 -
+2025-09-02 11:46:19,860 - werkzeug - INFO - 127.0.0.1 - - [02/Sep/2025 11:46:19] "[33mGET /sw.js HTTP/1.1[0m" 404 -
+2025-09-02 11:46:49,787 - werkzeug - INFO - 127.0.0.1 - - [02/Sep/2025 11:46:49] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-09-02 11:47:04,119 - werkzeug - INFO - 127.0.0.1 - - [02/Sep/2025 11:47:04] "GET / HTTP/1.1" 200 -
+2025-09-02 11:47:04,173 - werkzeug - INFO - 127.0.0.1 - - [02/Sep/2025 11:47:04] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-09-02 11:47:04,179 - werkzeug - INFO - 127.0.0.1 - - [02/Sep/2025 11:47:04] "[33mGET /script.js HTTP/1.1[0m" 404 -
+2025-09-02 11:47:04,575 - werkzeug - INFO - 127.0.0.1 - - [02/Sep/2025 11:47:04] "[33mGET /sw.js HTTP/1.1[0m" 404 -
+2025-09-02 11:56:17,205 - werkzeug - INFO -  * Detected change in 'C:\\Users\\oluwa\\Desktop\\recipe_recommender\\recipe_recommender\\backend\\app.py', reloading
+2025-09-02 11:56:17,335 - werkzeug - INFO -  * Restarting with stat
+2025-09-02 11:56:18,505 - recipe_recommender.backend.database - INFO - Initializing database...
+2025-09-02 11:56:18,506 - recipe_recommender.backend.database - INFO - Database schema created successfully
+2025-09-02 11:56:18,507 - recipe_recommender.backend.app - INFO - Database initialized successfully
+2025-09-02 11:56:18,507 - recipe_recommender.backend.services.ai_service - INFO - AI Recipe Service initialized with Gemini model: gemini-pro
+2025-09-02 11:56:18,512 - recipe_recommender.backend.app - INFO - Flask application initialized successfully
+2025-09-02 11:56:18,514 - recipe_recommender.backend.database - INFO - Initializing database...
+2025-09-02 11:56:18,514 - recipe_recommender.backend.database - INFO - Database schema created successfully
+2025-09-02 11:56:18,514 - recipe_recommender.backend.app - INFO - Database initialized successfully
+2025-09-02 11:56:18,514 - recipe_recommender.backend.services.ai_service - INFO - AI Recipe Service initialized with Gemini model: gemini-pro
+2025-09-02 11:56:18,520 - recipe_recommender.backend.app - INFO - Flask application initialized successfully
+2025-09-02 11:56:18,538 - werkzeug - WARNING -  * Debugger is active!
+2025-09-02 11:56:18,540 - werkzeug - INFO -  * Debugger PIN: 683-997-820
+2025-09-02 12:08:08,808 - werkzeug - INFO -  * Detected change in 'C:\\Users\\oluwa\\Desktop\\recipe_recommender\\recipe_recommender\\backend\\app.py', reloading
+2025-09-02 12:08:08,931 - werkzeug - INFO -  * Restarting with stat
+2025-09-02 12:08:10,053 - recipe_recommender.backend.database - INFO - Initializing database...
+2025-09-02 12:08:10,055 - recipe_recommender.backend.database - INFO - Database schema created successfully
+2025-09-02 12:08:10,056 - recipe_recommender.backend.app - INFO - Database initialized successfully
+2025-09-02 12:08:10,056 - recipe_recommender.backend.services.ai_service - INFO - AI Recipe Service initialized with Gemini model: gemini-pro
+2025-09-02 12:08:10,060 - recipe_recommender.backend.app - INFO - Flask application initialized successfully
+2025-09-02 12:08:10,062 - recipe_recommender.backend.database - INFO - Initializing database...
+2025-09-02 12:08:10,062 - recipe_recommender.backend.database - INFO - Database schema created successfully
+2025-09-02 12:08:10,062 - recipe_recommender.backend.app - INFO - Database initialized successfully
+2025-09-02 12:08:10,063 - recipe_recommender.backend.services.ai_service - INFO - AI Recipe Service initialized with Gemini model: gemini-pro
+2025-09-02 12:08:10,068 - recipe_recommender.backend.app - INFO - Flask application initialized successfully
+2025-09-02 12:08:10,085 - werkzeug - WARNING -  * Debugger is active!
+2025-09-02 12:08:10,087 - werkzeug - INFO -  * Debugger PIN: 683-997-820
+2025-09-02 12:16:13,132 - recipe_recommender.backend.database - INFO - Initializing database...
+2025-09-02 12:16:13,134 - recipe_recommender.backend.database - INFO - Database schema created successfully
+2025-09-02 12:16:13,134 - recipe_recommender.backend.app - INFO - Database initialized successfully
+2025-09-02 12:16:13,134 - recipe_recommender.backend.services.ai_service - INFO - AI Recipe Service initialized with Gemini model: gemini-pro
+2025-09-02 12:16:13,138 - recipe_recommender.backend.app - INFO - Flask application initialized successfully
+2025-09-02 12:16:13,140 - recipe_recommender.backend.database - INFO - Initializing database...
+2025-09-02 12:16:13,140 - recipe_recommender.backend.database - INFO - Database schema created successfully
+2025-09-02 12:16:13,140 - recipe_recommender.backend.app - INFO - Database initialized successfully
+2025-09-02 12:16:13,141 - recipe_recommender.backend.services.ai_service - INFO - AI Recipe Service initialized with Gemini model: gemini-pro
+2025-09-02 12:16:13,145 - recipe_recommender.backend.app - INFO - Flask application initialized successfully
+2025-09-02 12:16:13,175 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.110:5000
+2025-09-02 12:16:13,176 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-09-02 12:16:13,177 - werkzeug - INFO -  * Restarting with stat
+2025-09-02 12:16:14,123 - recipe_recommender.backend.database - INFO - Initializing database...
+2025-09-02 12:16:14,132 - recipe_recommender.backend.database - INFO - Database schema created successfully
+2025-09-02 12:16:14,132 - recipe_recommender.backend.app - INFO - Database initialized successfully
+2025-09-02 12:16:14,132 - recipe_recommender.backend.services.ai_service - INFO - AI Recipe Service initialized with Gemini model: gemini-pro
+2025-09-02 12:16:14,136 - recipe_recommender.backend.app - INFO - Flask application initialized successfully
+2025-09-02 12:16:14,137 - recipe_recommender.backend.database - INFO - Initializing database...
+2025-09-02 12:16:14,138 - recipe_recommender.backend.database - INFO - Database schema created successfully
+2025-09-02 12:16:14,138 - recipe_recommender.backend.app - INFO - Database initialized successfully
+2025-09-02 12:16:14,138 - recipe_recommender.backend.services.ai_service - INFO - AI Recipe Service initialized with Gemini model: gemini-pro
+2025-09-02 12:16:14,143 - recipe_recommender.backend.app - INFO - Flask application initialized successfully
+2025-09-02 12:16:14,158 - werkzeug - WARNING -  * Debugger is active!
+2025-09-02 12:16:14,160 - werkzeug - INFO -  * Debugger PIN: 683-997-820
+2025-09-02 12:16:35,480 - werkzeug - INFO - 127.0.0.1 - - [02/Sep/2025 12:16:35] "GET / HTTP/1.1" 200 -
+2025-09-02 12:16:35,526 - werkzeug - INFO - 127.0.0.1 - - [02/Sep/2025 12:16:35] "[33mGET /script.js HTTP/1.1[0m" 404 -
+2025-09-02 12:16:36,959 - werkzeug - INFO - 127.0.0.1 - - [02/Sep/2025 12:16:36] "[33mGET /sw.js HTTP/1.1[0m" 404 -
+2025-09-02 12:16:41,328 - werkzeug - INFO - 127.0.0.1 - - [02/Sep/2025 12:16:41] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-09-02 12:18:13,427 - werkzeug - INFO -  * Detected change in 'C:\\Users\\oluwa\\Desktop\\recipe_recommender\\recipe_recommender\\backend\\app.py', reloading
+2025-09-02 12:18:13,556 - werkzeug - INFO -  * Restarting with stat
+2025-09-02 12:18:14,624 - recipe_recommender.backend.database - INFO - Initializing database...
+2025-09-02 12:18:14,625 - recipe_recommender.backend.database - INFO - Database schema created successfully
+2025-09-02 12:18:14,626 - recipe_recommender.backend.app - INFO - Database initialized successfully
+2025-09-02 12:18:14,626 - recipe_recommender.backend.services.ai_service - INFO - AI Recipe Service initialized with Gemini model: gemini-pro
+2025-09-02 12:18:14,630 - recipe_recommender.backend.app - INFO - Flask application initialized successfully
+2025-09-02 12:18:14,631 - recipe_recommender.backend.database - INFO - Initializing database...
+2025-09-02 12:18:14,631 - recipe_recommender.backend.database - INFO - Database schema created successfully
+2025-09-02 12:18:14,632 - recipe_recommender.backend.app - INFO - Database initialized successfully
+2025-09-02 12:18:14,632 - recipe_recommender.backend.services.ai_service - INFO - AI Recipe Service initialized with Gemini model: gemini-pro
+2025-09-02 12:18:14,636 - recipe_recommender.backend.app - INFO - Flask application initialized successfully
+2025-09-02 12:18:14,651 - werkzeug - WARNING -  * Debugger is active!
+2025-09-02 12:18:14,653 - werkzeug - INFO -  * Debugger PIN: 683-997-820
+2025-09-02 12:21:10,982 - recipe_recommender.backend.database - INFO - Initializing database...
+2025-09-02 12:21:10,984 - recipe_recommender.backend.database - INFO - Database schema created successfully
+2025-09-02 12:21:10,984 - recipe_recommender.backend.app - INFO - Database initialized successfully
+2025-09-02 12:21:10,984 - recipe_recommender.backend.services.ai_service - INFO - AI Recipe Service initialized with Gemini model: gemini-pro
+2025-09-02 12:21:10,989 - recipe_recommender.backend.app - INFO - Flask application initialized successfully
+2025-09-02 12:21:10,990 - recipe_recommender.backend.database - INFO - Initializing database...
+2025-09-02 12:21:10,990 - recipe_recommender.backend.database - INFO - Database schema created successfully
+2025-09-02 12:21:10,990 - recipe_recommender.backend.app - INFO - Database initialized successfully
+2025-09-02 12:21:10,990 - recipe_recommender.backend.services.ai_service - INFO - AI Recipe Service initialized with Gemini model: gemini-pro
+2025-09-02 12:21:10,995 - recipe_recommender.backend.app - INFO - Flask application initialized successfully
+2025-09-02 12:21:11,022 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.110:5000
+2025-09-02 12:21:11,022 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-09-02 12:21:11,023 - werkzeug - INFO -  * Restarting with stat
+2025-09-02 12:21:11,971 - recipe_recommender.backend.database - INFO - Initializing database...
+2025-09-02 12:21:11,979 - recipe_recommender.backend.database - INFO - Database schema created successfully
+2025-09-02 12:21:11,980 - recipe_recommender.backend.app - INFO - Database initialized successfully
+2025-09-02 12:21:11,980 - recipe_recommender.backend.services.ai_service - INFO - AI Recipe Service initialized with Gemini model: gemini-pro
+2025-09-02 12:21:11,984 - recipe_recommender.backend.app - INFO - Flask application initialized successfully
+2025-09-02 12:21:11,985 - recipe_recommender.backend.database - INFO - Initializing database...
+2025-09-02 12:21:11,986 - recipe_recommender.backend.database - INFO - Database schema created successfully
+2025-09-02 12:21:11,986 - recipe_recommender.backend.app - INFO - Database initialized successfully
+2025-09-02 12:21:11,986 - recipe_recommender.backend.services.ai_service - INFO - AI Recipe Service initialized with Gemini model: gemini-pro
+2025-09-02 12:21:11,991 - recipe_recommender.backend.app - INFO - Flask application initialized successfully
+2025-09-02 12:21:12,008 - werkzeug - WARNING -  * Debugger is active!
+2025-09-02 12:21:12,010 - werkzeug - INFO -  * Debugger PIN: 683-997-820
+2025-09-02 12:21:23,827 - werkzeug - INFO - 127.0.0.1 - - [02/Sep/2025 12:21:23] "GET / HTTP/1.1" 200 -
+2025-09-02 12:21:23,868 - werkzeug - INFO - 127.0.0.1 - - [02/Sep/2025 12:21:23] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-09-02 12:21:24,068 - werkzeug - INFO - 127.0.0.1 - - [02/Sep/2025 12:21:24] "GET /static/style.css HTTP/1.1" 200 -
+2025-09-02 12:21:24,184 - werkzeug - INFO - 127.0.0.1 - - [02/Sep/2025 12:21:24] "GET /static/script.js HTTP/1.1" 200 -
+2025-09-02 12:21:24,885 - werkzeug - INFO - 127.0.0.1 - - [02/Sep/2025 12:21:24] "[33mGET /sw.js HTTP/1.1[0m" 404 -
+2025-09-02 12:23:35,406 - werkzeug - INFO - 127.0.0.1 - - [02/Sep/2025 12:23:35] "GET / HTTP/1.1" 200 -
+2025-09-02 12:23:35,441 - werkzeug - INFO - 127.0.0.1 - - [02/Sep/2025 12:23:35] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-09-02 12:23:35,638 - werkzeug - INFO - 127.0.0.1 - - [02/Sep/2025 12:23:35] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-09-02 12:23:35,763 - werkzeug - INFO - 127.0.0.1 - - [02/Sep/2025 12:23:35] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+2025-09-02 12:23:36,301 - werkzeug - INFO - 127.0.0.1 - - [02/Sep/2025 12:23:36] "[33mGET /sw.js HTTP/1.1[0m" 404 -
+2025-09-02 12:28:16,132 - recipe_recommender.backend.services.ai_service - INFO - Requesting AI recipe suggestions for: ['onions', 'pepper']
+2025-09-02 12:28:17,158 - recipe_recommender.backend.services.ai_service - ERROR - Error calling Gemini API: 404 models/gemini-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+2025-09-02 12:28:17,159 - recipe_recommender.backend.services.ai_service - WARNING - Attempt 1 failed: 404 models/gemini-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.. Retrying in 2s...
+2025-09-02 12:28:19,426 - recipe_recommender.backend.services.ai_service - ERROR - Error calling Gemini API: 404 models/gemini-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+2025-09-02 12:28:19,427 - recipe_recommender.backend.services.ai_service - ERROR - Failed to get AI recipe suggestions: 404 models/gemini-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+2025-09-02 12:28:19,428 - recipe_recommender.backend.services.ai_service - INFO - Generating fallback recipe suggestions
+2025-09-02 12:28:19,431 - recipe_recommender.backend.services.recipe_service - INFO - Found 0 DB recipe matches for ['onions', 'pepper']
+2025-09-02 12:28:19,441 - werkzeug - INFO - 127.0.0.1 - - [02/Sep/2025 12:28:19] "POST /api/recipes/search HTTP/1.1" 200 -
+2025-09-02 12:30:56,692 - werkzeug - INFO -  * Detected change in 'C:\\Users\\oluwa\\Desktop\\recipe_recommender\\recipe_recommender\\backend\\services\\ai_service.py', reloading
+2025-09-02 12:30:58,832 - werkzeug - INFO -  * Restarting with stat
+2025-09-02 12:30:59,888 - recipe_recommender.backend.database - INFO - Initializing database...
+2025-09-02 12:30:59,889 - recipe_recommender.backend.database - INFO - Database schema created successfully
+2025-09-02 12:30:59,890 - recipe_recommender.backend.app - INFO - Database initialized successfully
+2025-09-02 12:30:59,890 - recipe_recommender.backend.services.ai_service - INFO - AI Recipe Service initialized with Gemini model: gemini-2.0-flash
+2025-09-02 12:30:59,894 - recipe_recommender.backend.app - INFO - Flask application initialized successfully
+2025-09-02 12:30:59,896 - recipe_recommender.backend.database - INFO - Initializing database...
+2025-09-02 12:30:59,896 - recipe_recommender.backend.database - INFO - Database schema created successfully
+2025-09-02 12:30:59,896 - recipe_recommender.backend.app - INFO - Database initialized successfully
+2025-09-02 12:30:59,896 - recipe_recommender.backend.services.ai_service - INFO - AI Recipe Service initialized with Gemini model: gemini-2.0-flash
+2025-09-02 12:30:59,901 - recipe_recommender.backend.app - INFO - Flask application initialized successfully
+2025-09-02 12:30:59,918 - werkzeug - WARNING -  * Debugger is active!
+2025-09-02 12:30:59,920 - werkzeug - INFO -  * Debugger PIN: 683-997-820
+2025-09-02 12:31:08,015 - recipe_recommender.backend.database - INFO - Initializing database...
+2025-09-02 12:31:08,017 - recipe_recommender.backend.database - INFO - Database schema created successfully
+2025-09-02 12:31:08,018 - recipe_recommender.backend.app - INFO - Database initialized successfully
+2025-09-02 12:31:08,018 - recipe_recommender.backend.services.ai_service - INFO - AI Recipe Service initialized with Gemini model: gemini-2.0-flash
+2025-09-02 12:31:08,022 - recipe_recommender.backend.app - INFO - Flask application initialized successfully
+2025-09-02 12:31:08,023 - recipe_recommender.backend.database - INFO - Initializing database...
+2025-09-02 12:31:08,024 - recipe_recommender.backend.database - INFO - Database schema created successfully
+2025-09-02 12:31:08,024 - recipe_recommender.backend.app - INFO - Database initialized successfully
+2025-09-02 12:31:08,024 - recipe_recommender.backend.services.ai_service - INFO - AI Recipe Service initialized with Gemini model: gemini-2.0-flash
+2025-09-02 12:31:08,029 - recipe_recommender.backend.app - INFO - Flask application initialized successfully
+2025-09-02 12:31:08,059 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.110:5000
+2025-09-02 12:31:08,060 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-09-02 12:31:08,061 - werkzeug - INFO -  * Restarting with stat
+2025-09-02 12:31:08,969 - recipe_recommender.backend.database - INFO - Initializing database...
+2025-09-02 12:31:08,978 - recipe_recommender.backend.database - INFO - Database schema created successfully
+2025-09-02 12:31:08,978 - recipe_recommender.backend.app - INFO - Database initialized successfully
+2025-09-02 12:31:08,979 - recipe_recommender.backend.services.ai_service - INFO - AI Recipe Service initialized with Gemini model: gemini-2.0-flash
+2025-09-02 12:31:08,983 - recipe_recommender.backend.app - INFO - Flask application initialized successfully
+2025-09-02 12:31:08,984 - recipe_recommender.backend.database - INFO - Initializing database...
+2025-09-02 12:31:08,985 - recipe_recommender.backend.database - INFO - Database schema created successfully
+2025-09-02 12:31:08,985 - recipe_recommender.backend.app - INFO - Database initialized successfully
+2025-09-02 12:31:08,985 - recipe_recommender.backend.services.ai_service - INFO - AI Recipe Service initialized with Gemini model: gemini-2.0-flash
+2025-09-02 12:31:08,990 - recipe_recommender.backend.app - INFO - Flask application initialized successfully
+2025-09-02 12:31:09,006 - werkzeug - WARNING -  * Debugger is active!
+2025-09-02 12:31:09,008 - werkzeug - INFO -  * Debugger PIN: 683-997-820
+2025-09-02 12:31:15,361 - recipe_recommender.backend.services.ai_service - INFO - Requesting AI recipe suggestions for: ['onions', 'pepper', 'chicken', 'garlic', 'tomatoes', 'rice', 'olive oil', 'salt', 'carrots', 'potatoes']
+2025-09-02 12:31:23,141 - recipe_recommender.backend.services.ai_service - INFO - Generated 3 AI recipe suggestions
+2025-09-02 12:31:23,142 - recipe_recommender.backend.services.recipe_service - INFO - Found 0 DB recipe matches for ['onions', 'pepper', 'chicken', 'garlic', 'tomatoes', 'rice', 'olive oil', 'salt', 'carrots', 'potatoes']
+2025-09-02 12:31:23,143 - werkzeug - INFO - 127.0.0.1 - - [02/Sep/2025 12:31:23] "POST /api/recipes/search HTTP/1.1" 200 -
+2025-09-02 12:33:25,718 - werkzeug - INFO - 127.0.0.1 - - [02/Sep/2025 12:33:25] "GET / HTTP/1.1" 200 -
+2025-09-02 12:33:25,814 - werkzeug - INFO - 127.0.0.1 - - [02/Sep/2025 12:33:25] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-09-02 12:33:25,947 - werkzeug - INFO - 127.0.0.1 - - [02/Sep/2025 12:33:25] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-09-02 12:33:26,142 - werkzeug - INFO - 127.0.0.1 - - [02/Sep/2025 12:33:26] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+2025-09-02 12:33:26,671 - werkzeug - INFO - 127.0.0.1 - - [02/Sep/2025 12:33:26] "[33mGET /sw.js HTTP/1.1[0m" 404 -
+2025-09-02 12:36:04,044 - werkzeug - INFO -  * Detected change in 'C:\\Users\\oluwa\\Desktop\\recipe_recommender\\run.py', reloading
+2025-09-02 12:36:06,178 - werkzeug - INFO -  * Restarting with stat
+2025-09-02 12:36:07,199 - recipe_recommender.backend.database - INFO - Initializing database...
+2025-09-02 12:36:07,208 - recipe_recommender.backend.database - INFO - Database schema created successfully
+2025-09-02 12:36:07,208 - recipe_recommender.backend.app - INFO - Database initialized successfully
+2025-09-02 12:36:07,208 - recipe_recommender.backend.services.ai_service - INFO - AI Recipe Service initialized with Gemini model: gemini-2.0-flash
+2025-09-02 12:36:07,213 - recipe_recommender.backend.app - INFO - Flask application initialized successfully
+2025-09-02 12:36:07,214 - recipe_recommender.backend.database - INFO - Initializing database...
+2025-09-02 12:36:07,214 - recipe_recommender.backend.database - INFO - Database schema created successfully
+2025-09-02 12:36:07,214 - recipe_recommender.backend.app - INFO - Database initialized successfully
+2025-09-02 12:36:07,215 - recipe_recommender.backend.services.ai_service - INFO - AI Recipe Service initialized with Gemini model: gemini-2.0-flash
+2025-09-02 12:36:07,219 - recipe_recommender.backend.app - INFO - Flask application initialized successfully
+2025-09-02 12:36:07,234 - werkzeug - WARNING -  * Debugger is active!
+2025-09-02 12:36:07,237 - werkzeug - INFO -  * Debugger PIN: 683-997-820
+2025-09-02 12:37:43,218 - werkzeug - INFO -  * Detected change in 'C:\\Users\\oluwa\\Desktop\\recipe_recommender\\run.py', reloading
+2025-09-02 12:37:43,337 - werkzeug - INFO -  * Restarting with stat
+2025-09-02 12:37:44,437 - recipe_recommender.backend.database - INFO - Initializing database...
+2025-09-02 12:37:44,439 - recipe_recommender.backend.database - INFO - Database schema created successfully
+2025-09-02 12:37:44,439 - recipe_recommender.backend.app - INFO - Database initialized successfully
+2025-09-02 12:37:44,440 - recipe_recommender.backend.services.ai_service - INFO - AI Recipe Service initialized with Gemini model: gemini-2.0-flash
+2025-09-02 12:37:44,447 - recipe_recommender.backend.app - INFO - Flask application initialized successfully
+2025-09-02 12:37:44,449 - recipe_recommender.backend.database - INFO - Initializing database...
+2025-09-02 12:37:44,449 - recipe_recommender.backend.database - INFO - Database schema created successfully
+2025-09-02 12:37:44,449 - recipe_recommender.backend.app - INFO - Database initialized successfully
+2025-09-02 12:37:44,449 - recipe_recommender.backend.services.ai_service - INFO - AI Recipe Service initialized with Gemini model: gemini-2.0-flash
+2025-09-02 12:37:44,455 - recipe_recommender.backend.app - INFO - Flask application initialized successfully
+2025-09-02 12:37:44,473 - werkzeug - WARNING -  * Debugger is active!
+2025-09-02 12:37:44,475 - werkzeug - INFO -  * Debugger PIN: 683-997-820

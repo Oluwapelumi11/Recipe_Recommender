@@ -1,0 +1,16 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite
+*.sqlite3
+*.log
+.env
+.env.example
+*.sh
+.idea/
+.vscode/
+.git/
+data/recipes.db*
+tests/

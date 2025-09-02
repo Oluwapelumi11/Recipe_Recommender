@@ -81,19 +81,19 @@ class AIRecipeService:
     AI-powered recipe recommendation service using OpenAI API
     """
     
-    def __init__(self, api_key: str = None, model: str = "gemini-pro"):
+    def __init__(self, api_key: str = None, model: str = "gemini-2.0-flash"):
         """
         Initialize AI service with Gemini configuration
         Args:
             api_key (str): Gemini API key (optional, will use env if not provided)
-            model (str): Gemini model to use (default: gemini-pro)
+            model (str): Gemini model to use (default: gemini-2.0-flash)
         """
         # Fetch Gemini API key from env if not provided
         self.api_key = api_key or os.getenv("GEMINI_API_KEY")
         if not self.api_key:
             raise ValueError("Valid Gemini API key required. Set GEMINI_API_KEY in your environment.")
         genai.configure(api_key=self.api_key)
-        self.model = model  # Typically "gemini-pro" or similar
+        self.model = model  # Typically "gemini-2.0-flash" or similar
         self.rate_limiter = RateLimiter(max_calls_per_minute=15)  # Conservative limit
 
         # Cache for repeated queries (simple in-memory cache)

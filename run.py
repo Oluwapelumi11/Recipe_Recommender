@@ -18,17 +18,13 @@ from dotenv import load_dotenv
 # Load .env file from project root BEFORE any config import
 load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), '.env'))
 
-# Add backend directory to Python path
-backend_path = Path(__file__).parent / 'backend'
-sys.path.insert(0, str(backend_path))
-
-try:
-    from app import create_app
-    from config import Config
-except ImportError as e:
-    print(f"❌ Error importing application: {e}")
-    print("💡 Make sure you've run 'python setup.py' first")
-    sys.exit(1)
+# try:
+from recipe_recommender.backend.app import create_app
+from recipe_recommender.backend.config import Config
+# except ImportError as e:
+#     print(f"❌ Error importing application: {e}")
+#     print("💡 Make sure you've run 'python setup.py' first")
+#     sys.exit(1)
 
 def main():
     """Main application runner"""
@@ -37,8 +33,8 @@ def main():
         app = create_app()
         
         # Get configuration
-        port = int(os.environ.get('PORT', 5000))
-        host = os.environ.get('HOST', '0.0.0.0')
+        port = int(os.environ.get('PORT', 3456))  # Default to 3456 for container/coolify
+        host = os.environ.get('HOST', '0.0.0.0') # Listen on all interfaces by default
         debug = os.environ.get('DEBUG', 'False').lower() == 'true'
         
         print("🍽️  Recipe Recommender Starting...")

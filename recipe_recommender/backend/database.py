@@ -19,7 +19,7 @@ import logging
 from contextlib import contextmanager
 from datetime import datetime
 from threading import Lock
-from config import Config
+from .config import Config
 
 # Configure logging
 logger = logging.getLogger(__name__)

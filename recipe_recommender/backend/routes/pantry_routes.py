@@ -5,7 +5,7 @@ API endpoints for managing a user's pantry.
 """
 
 from flask import Blueprint, request, jsonify
-from backend.services.pantry_service import PantryService
+from recipe_recommender.backend.services.pantry_service import PantryService
 
 pantry_bp = Blueprint('pantry', __name__)
 service = PantryService()

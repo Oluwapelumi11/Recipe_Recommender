@@ -18,17 +18,22 @@ from pathlib import Path
 # Load .env file from project root BEFORE any config import
 from dotenv import load_dotenv
 load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), '.env'))
-# Add project root to path for imports
-sys.path.insert(0, os.path.dirname(__file__))
-# print("Current working directory:", os.getcwd())
+
+# Add both the project root and the parent directory to sys.path for robust imports
+PROJECT_ROOT = os.path.dirname(__file__)
+PARENT_DIR = os.path.dirname(PROJECT_ROOT)
+sys.path.insert(0, PARENT_DIR)        # add parent directory
+sys.path.insert(0, PROJECT_ROOT)      # add project root itself
+#print("Current working directory:", os.getcwd())
 # print("sys.path:", sys.path)
-try:
-    from recipe_recommender.backend.configg import Config
-    from recipe_recommender.backend.database import init_db, cleanup_old_data
-except ImportError as e:
-    print(f"Error importing modules: {e}")
-    print("Make sure you're running this from the project root directory")
-    sys.exit(1)
+# print("Current working directory:", os.getcwd())
+# try:
+from recipe_recommender.backend.config import Config
+from recipe_recommender.backend.database import init_db, cleanup_old_data
+# except ImportError as e:
+#     print(f"Error importing modules: {e}")
+#     print("Tip: Be sure you're running from the project root (should contain setup.py and the recipe_recommender/ folder). Printing directory listing:")
+#     sys.exit(1)
 
 # Configure logging
 logging.basicConfig(
@@ -67,7 +72,7 @@ def setup_database():
 def verify_setup():
     """Verify the database setup is working correctly"""
     try:
-        from database import get_db_connection
+        from recipe_recommender.backend.database import get_db_connection
         
         with get_db_connection() as conn:
             # Test basic queries

@@ -21,13 +21,13 @@ from contextlib import contextmanager
 import json
 
 # Import custom modules
-from recipe_recommender.backend.configg import Config
-from database import init_db, get_db_connection
-from services.ai_service import AIRecipeService
-from services.recipe_service import RecipeService
-from services.pantry_service import PantryService
-from routes.api_routes import api_bp
-from routes.pantry_routes import pantry_bp
+from recipe_recommender.backend.config import Config
+from recipe_recommender.backend.database import init_db, get_db_connection
+from recipe_recommender.backend.services.ai_service import AIRecipeService
+from recipe_recommender.backend.services.recipe_service import RecipeService
+from recipe_recommender.backend.services.pantry_service import PantryService
+from recipe_recommender.backend.routes.api_routes import api_bp
+from recipe_recommender.backend.routes.pantry_routes import pantry_bp
 
 # Configure logging for production readiness
 logging.basicConfig(
@@ -48,8 +48,8 @@ def create_app():
         Flask: Configured Flask application instance
     """
     app = Flask(__name__, 
-                template_folder='../frontend',
-                static_folder='../frontend')
+                template_folder='templates',
+                static_folder='static')
     
     # Load configuration from environment variables
     app.config.from_object(Config)
@@ -67,7 +67,7 @@ def create_app():
         logger.info("Database initialized successfully")
     
     # Initialize services
-    app.ai_service = AIRecipeService(app.config['OPENAI_API_KEY'])
+    app.ai_service = AIRecipeService(app.config['GEMINI_API_KEY'])
     app.recipe_service = RecipeService()
     app.pantry_service = PantryService()
     
@@ -125,6 +125,11 @@ def create_app():
     def index():
         """Serve the main application page"""
         try:
+            # Add tags for stylesheet and script injection
+            extra_head = """
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+"""
             return render_template('index.html')
         except Exception as e:
             logger.error(f"Error serving index page: {e}")
@@ -231,14 +236,7 @@ def create_app():
             logger.error(f"Error getting popular ingredients: {e}")
             return jsonify({'error': 'Failed to fetch analytics'}), 500
     
-    # Static file serving for production
-    @app.route('/static/<path:filename>')
-    def serve_static(filename):
-        """Serve static files with proper caching headers"""
-        response = send_from_directory('../frontend', filename)
-        # Set cache headers for static assets
-        response.headers['Cache-Control'] = 'public, max-age=3600'  # 1 hour cache
-        return response
+    # Flask automatically serves static files from the static folder, so custom static route is not needed.
     
     logger.info("Flask application initialized successfully")
     return app

@@ -5,11 +5,11 @@ Generic API endpoints (non-pantry)
 """
 
 from flask import Blueprint, request, jsonify
-from backend.database import get_recipe_by_id
-from backend.models.recipe import Recipe
-from backend.services.recipe_service import RecipeService
-from backend.services.ai_service import AIRecipeService
-from config import Config
+from recipe_recommender.backend.database import get_recipe_by_id
+from recipe_recommender.backend.models.recipe import Recipe
+from recipe_recommender.backend.services.recipe_service import RecipeService
+from recipe_recommender.backend.services.ai_service import AIRecipeService
+from recipe_recommender.backend.config import Config
 import json
 
 api_bp = Blueprint('api', __name__)
