@@ -10,6 +10,7 @@ from recipe_recommender.backend.models.recipe import Recipe
 from recipe_recommender.backend.services.recipe_service import RecipeService
 from recipe_recommender.backend.services.ai_service import AIRecipeService
 from recipe_recommender.backend.config import Config
+
 import json
 
 api_bp = Blueprint('api', __name__)
@@ -45,6 +46,6 @@ def ingredient_substitute():
     cuisine = request.args.get('cuisine', 'global')
     if not ingredient:
         return jsonify({'error': 'Missing ingredient parameter'}), 400
-    ai_service = AIRecipeService(Config.OPENAI_API_KEY)
+    ai_service = AIRecipeService(Config.GEMINI_API_KEY)
     substitutions = ai_service.get_ingredient_substitutions(ingredient, cuisine)
     return jsonify({'ingredient': ingredient, 'substitutions': substitutions})

@@ -29,6 +29,7 @@ from recipe_recommender.backend.services.pantry_service import PantryService
 from recipe_recommender.backend.routes.api_routes import api_bp
 from recipe_recommender.backend.routes.pantry_routes import pantry_bp
 
+
 # Configure logging for production readiness
 logging.basicConfig(
     level=logging.INFO,
