@@ -238,3 +238,45 @@
 2025-09-02 12:37:44,475 - werkzeug - INFO -  * Debugger PIN: 683-997-820
 2025-09-02 12:41:32,283 - werkzeug - INFO -  * Detected change in 'C:\\Users\\oluwa\\Desktop\\recipe_recommender\\recipe_recommender\\backend\\app.py', reloading
 2025-09-02 12:41:32,397 - werkzeug - INFO -  * Restarting with stat
+2025-09-02 12:47:54,013 - recipe_recommender.backend.database - INFO - Initializing database...
+2025-09-02 12:47:54,016 - recipe_recommender.backend.database - INFO - Database schema created successfully
+2025-09-02 12:47:54,017 - recipe_recommender.backend.app - INFO - Database initialized successfully
+2025-09-02 12:47:54,017 - recipe_recommender.backend.services.ai_service - INFO - AI Recipe Service initialized with Gemini model: gemini-2.0-flash
+2025-09-02 12:47:54,021 - recipe_recommender.backend.app - INFO - Flask application initialized successfully
+2025-09-02 12:47:54,022 - recipe_recommender.backend.database - INFO - Initializing database...
+2025-09-02 12:47:54,023 - recipe_recommender.backend.database - INFO - Database schema created successfully
+2025-09-02 12:47:54,023 - recipe_recommender.backend.app - INFO - Database initialized successfully
+2025-09-02 12:47:54,023 - recipe_recommender.backend.services.ai_service - INFO - AI Recipe Service initialized with Gemini model: gemini-2.0-flash
+2025-09-02 12:47:54,028 - recipe_recommender.backend.app - INFO - Flask application initialized successfully
+2025-09-02 12:47:54,056 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.110:5000
+2025-09-02 12:47:54,056 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-09-02 12:47:54,057 - werkzeug - INFO -  * Restarting with stat
+2025-09-02 12:47:55,010 - recipe_recommender.backend.database - INFO - Initializing database...
+2025-09-02 12:47:55,018 - recipe_recommender.backend.database - INFO - Database schema created successfully
+2025-09-02 12:47:55,019 - recipe_recommender.backend.app - INFO - Database initialized successfully
+2025-09-02 12:47:55,019 - recipe_recommender.backend.services.ai_service - INFO - AI Recipe Service initialized with Gemini model: gemini-2.0-flash
+2025-09-02 12:47:55,024 - recipe_recommender.backend.app - INFO - Flask application initialized successfully
+2025-09-02 12:47:55,025 - recipe_recommender.backend.database - INFO - Initializing database...
+2025-09-02 12:47:55,025 - recipe_recommender.backend.database - INFO - Database schema created successfully
+2025-09-02 12:47:55,026 - recipe_recommender.backend.app - INFO - Database initialized successfully
+2025-09-02 12:47:55,026 - recipe_recommender.backend.services.ai_service - INFO - AI Recipe Service initialized with Gemini model: gemini-2.0-flash
+2025-09-02 12:47:55,030 - recipe_recommender.backend.app - INFO - Flask application initialized successfully
+2025-09-02 12:47:55,045 - werkzeug - WARNING -  * Debugger is active!
+2025-09-02 12:47:55,047 - werkzeug - INFO -  * Debugger PIN: 683-997-820
+2025-09-02 12:48:00,995 - werkzeug - INFO - 127.0.0.1 - - [02/Sep/2025 12:48:00] "GET / HTTP/1.1" 200 -
+2025-09-02 12:48:01,036 - werkzeug - INFO - 127.0.0.1 - - [02/Sep/2025 12:48:01] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-09-02 12:48:01,243 - werkzeug - INFO - 127.0.0.1 - - [02/Sep/2025 12:48:01] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-09-02 12:48:01,355 - werkzeug - INFO - 127.0.0.1 - - [02/Sep/2025 12:48:01] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+2025-09-02 12:48:01,911 - werkzeug - INFO - 127.0.0.1 - - [02/Sep/2025 12:48:01] "[33mGET /sw.js HTTP/1.1[0m" 404 -
+2025-09-02 12:48:19,778 - werkzeug - INFO - 127.0.0.1 - - [02/Sep/2025 12:48:19] "GET / HTTP/1.1" 200 -
+2025-09-02 12:48:20,089 - werkzeug - INFO - 127.0.0.1 - - [02/Sep/2025 12:48:20] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-09-02 12:48:20,163 - werkzeug - INFO - 127.0.0.1 - - [02/Sep/2025 12:48:20] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+2025-09-02 12:48:20,164 - werkzeug - INFO - 127.0.0.1 - - [02/Sep/2025 12:48:20] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-09-02 12:48:20,730 - werkzeug - INFO - 127.0.0.1 - - [02/Sep/2025 12:48:20] "[33mGET /sw.js HTTP/1.1[0m" 404 -
+2025-09-02 12:48:50,620 - recipe_recommender.backend.services.ai_service - INFO - Requesting AI recipe suggestions for: ['fried fish', 'pepper']
+2025-09-02 12:49:02,442 - recipe_recommender.backend.services.ai_service - INFO - Generated 3 AI recipe suggestions
+2025-09-02 12:49:02,443 - recipe_recommender.backend.services.recipe_service - INFO - Found 0 DB recipe matches for ['fried fish', 'pepper']
+2025-09-02 12:49:02,446 - werkzeug - INFO - 127.0.0.1 - - [02/Sep/2025 12:49:02] "POST /api/recipes/search HTTP/1.1" 200 -

@@ -18,8 +18,20 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Set environment variables
-ENV PYTHONUNBUFFERED=1
-ENV FLASK_ENV=production
+ENV PYTHONUNBUFFERED=1 \
+    GEMINI_API_KEY=AIzaSyAZ7KqNBEc1LyUBYGmUcjQ6i53L8VGJTOo \
+    GEMINI_MODEL=gemini-2.0-flash \
+    SECRET_KEY=your-secret-key-for-production \
+    FLASK_ENV=development \
+    DEBUG=True \
+    HOST=0.0.0.0 \
+    PORT=5000 \
+    DATABASE_PATH=./data/recipes.db \
+    CACHE_TYPE=simple \
+    CACHE_DEFAULT_TIMEOUT=300 \
+    RATELIMIT_PER_HOUR=100 \
+    CORS_ORIGINS=* \
+    LOG_LEVEL=INFO
 
 # Create data directory for SQLite if not exists
 RUN mkdir -p /app/data
