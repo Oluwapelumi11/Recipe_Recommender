@@ -8,8 +8,8 @@ Business logic for:
 """
 
 from typing import List, Optional
-from backend.models.recipe import Recipe
-from backend.database import (
+from models.recipe import Recipe
+from database import (
     get_db_connection, search_recipes_by_ingredients
 )
 import json

@@ -5,10 +5,10 @@ Generic API endpoints (non-pantry)
 """
 
 from flask import Blueprint, request, jsonify
-from backend.database import get_recipe_by_id
-from backend.models.recipe import Recipe
-from backend.services.recipe_service import RecipeService
-from backend.services.ai_service import AIRecipeService
+from database import get_recipe_by_id, get_db_connection
+from models.recipe import Recipe
+from services.recipe_service import RecipeService
+from services.ai_service import AIRecipeService
 from config import Config
 import json
 
@@ -45,6 +45,6 @@ def ingredient_substitute():
     cuisine = request.args.get('cuisine', 'global')
     if not ingredient:
         return jsonify({'error': 'Missing ingredient parameter'}), 400
-    ai_service = AIRecipeService(Config.OPENAI_API_KEY)
+    ai_service = AIRecipeService(Config.GEMINI_API_KEY)
     substitutions = ai_service.get_ingredient_substitutions(ingredient, cuisine)
     return jsonify({'ingredient': ingredient, 'substitutions': substitutions})

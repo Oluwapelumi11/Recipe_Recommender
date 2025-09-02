@@ -5,8 +5,8 @@ Manages user's pantry (ingredients storage)
 """
 
 from typing import List, Optional
-from backend.models.pantry import PantryItem
-from backend.database import get_db_connection
+from models.pantry import PantryItem
+from database import get_db_connection
 
 class PantryService:
     def get_pantry(self, user_id: int) -> List[dict]:

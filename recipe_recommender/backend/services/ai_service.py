@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """
-AI Recipe Service using OpenAI API
+AI Recipe Service using Gemini API
 ==================================
 Intelligent recipe generation with cultural awareness and dietary considerations.
 
 Features:
-- OpenAI GPT integration with optimized prompts
+- Gemini API integration with optimized prompts
 - Rate limiting and error handling
 - Cultural recipe suggestions (Sudanese focus)
 - Dietary restriction handling
@@ -39,7 +39,7 @@ class RecipeSuggestion:
     confidence_score: float = 0.8
 
 class RateLimiter:
-    """Simple rate limiter for OpenAI API calls"""
+    """Simple rate limiter for Gemini API calls"""
     
     def __init__(self, max_calls_per_minute=20):
         self.max_calls = max_calls_per_minute
@@ -78,22 +78,22 @@ def retry_on_failure(max_retries=3, delay=1):
 
 class AIRecipeService:
     """
-    AI-powered recipe recommendation service using OpenAI API
+    AI-powered recipe recommendation service using Gemini API
     """
     
-    def __init__(self, api_key: str = None, model: str = "gemini-pro"):
+    def __init__(self, api_key: str = None, model: str = "gemini-2.0-flash"):
         """
         Initialize AI service with Gemini configuration
         Args:
             api_key (str): Gemini API key (optional, will use env if not provided)
-            model (str): Gemini model to use (default: gemini-pro)
+            model (str): Gemini model to use (default: gemini-2.0-flash)
         """
         # Fetch Gemini API key from env if not provided
         self.api_key = api_key or os.getenv("GEMINI_API_KEY")
         if not self.api_key:
             raise ValueError("Valid Gemini API key required. Set GEMINI_API_KEY in your environment.")
         genai.configure(api_key=self.api_key)
-        self.model = model  # Typically "gemini-pro" or similar
+        self.model = model
         self.rate_limiter = RateLimiter(max_calls_per_minute=15)  # Conservative limit
 
         # Cache for repeated queries (simple in-memory cache)
@@ -132,7 +132,7 @@ class AIRecipeService:
             difficulty: Cooking difficulty level (1-5)
             
         Returns:
-            str: Formatted prompt for OpenAI
+            str: Formatted prompt for Gemini
         """
         # Build dietary restrictions string
         dietary_text = ""
@@ -223,10 +223,10 @@ Important: Respond with valid JSON only. No additional text or formatting."""
     
     def _parse_ai_response(self, response_text: str) -> List[RecipeSuggestion]:
         """
-        Parse and validate OpenAI response into structured format
+        Parse and validate Gemini response into structured format
         
         Args:
-            response_text (str): Raw response from OpenAI
+            response_text (str): Raw response from Gemini
             
         Returns:
             List[RecipeSuggestion]: Parsed recipe suggestions
@@ -316,7 +316,7 @@ Important: Respond with valid JSON only. No additional text or formatting."""
             return [self._suggestion_to_dict(suggestion) for suggestion in cached_result]
         
         try:
-            # Generate prompt and call OpenAI
+            # Generate prompt and call Gemini
             prompt = self._create_recipe_prompt(ingredients, cuisine_preference, dietary_restrictions, difficulty)
             
             logger.info(f"Requesting AI recipe suggestions for: {ingredients}")
@@ -461,185 +461,6 @@ Respond with JSON only:
                 'flour': ['rice flour', 'almond flour', 'coconut flour', 'oat flour']
             }
             return common_substitutions.get(ingredient.lower(), [])
-    
-    def analyze_recipe_complexity(self, ingredients: List[str], instructions: str) -> Dict[str, Any]:
-        """
-        Analyze recipe complexity and provide insights
-        
-        Args:
-            ingredients: Recipe ingredients
-            instructions: Cooking instructions
-            
-        Returns:
-            Dict: Complexity analysis with recommendations
-        """
-        # Simple complexity analysis based on ingredients and instruction length
-        ingredient_count = len(ingredients)
-        instruction_length = len(instructions.split('.'))
-        
-        # Calculate complexity score
-        complexity_score = 1
-        if ingredient_count > 10:
-            complexity_score += 1
-        if instruction_length > 8:
-            complexity_score += 1
-        if any(word in instructions.lower() for word in ['marinate', 'ferment', 'overnight', 'hours']):
-            complexity_score += 1
-        if any(word in instructions.lower() for word in ['blend', 'whisk', 'fold', 'knead']):
-            complexity_score += 1
-        
-        complexity_score = min(complexity_score, 5)
-        
-        complexity_labels = {
-            1: 'Very Easy',
-            2: 'Easy', 
-            3: 'Medium',
-            4: 'Hard',
-            5: 'Very Hard'
-        }
-        
-        return {
-            'complexity_score': complexity_score,
-            'complexity_label': complexity_labels[complexity_score],
-            'ingredient_count': ingredient_count,
-            'estimated_steps': instruction_length,
-            'time_intensive': 'hours' in instructions.lower() or 'overnight' in instructions.lower(),
-            'special_techniques': bool(re.search(r'\b(marinate|ferment|fold|knead|whisk)\b', instructions.lower()))
-        }
-    
-    def get_cooking_tips(self, recipe_name: str, cuisine_type: str) -> List[str]:
-        """
-        Get AI-generated cooking tips for a specific recipe
-        
-        Args:
-            recipe_name: Name of the recipe
-            cuisine_type: Type of cuisine
-            
-        Returns:
-            List[str]: Cooking tips and suggestions
-        """
-        try:
-            prompt = f"""Provide 3-4 practical cooking tips for making "{recipe_name}" ({cuisine_type} cuisine).
-            
-Focus on:
-- Key techniques for best results
-- Common mistakes to avoid
-- Ingredient preparation tips
-- Serving suggestions
-
-Respond with JSON only:
-{{"tips": ["tip1", "tip2", "tip3", ...]}}"""
-
-            response_text = self._call_gemini_api(prompt)
-            result = json.loads(response_text)
-            return result.get('tips', [])
-            
-        except Exception as e:
-            logger.error(f"Failed to get cooking tips: {e}")
-            return [
-                "Read through the entire recipe before starting",
-                "Prepare all ingredients before you start cooking",
-                "Taste and adjust seasoning as needed",
-                "Let meat rest after cooking for better texture"
-            ]
-    
-    def validate_recipe_safety(self, ingredients: List[str], instructions: str) -> Dict[str, Any]:
-        """
-        Basic recipe safety validation
-        
-        Args:
-            ingredients: Recipe ingredients
-            instructions: Cooking instructions
-            
-        Returns:
-            Dict: Safety analysis with warnings
-        """
-        warnings = []
-        safety_score = 100  # Start with perfect score
-        
-        # Check for potentially dangerous ingredients
-        dangerous_ingredients = ['raw eggs', 'raw chicken', 'raw fish', 'raw pork', 'raw beef']
-        for dangerous in dangerous_ingredients:
-            if any(dangerous in ing.lower() for ing in ingredients):
-                if 'cook' not in instructions.lower() and 'bake' not in instructions.lower():
-                    warnings.append(f"Recipe contains {dangerous} - ensure proper cooking temperatures")
-                    safety_score -= 20
-        
-        # Check for proper cooking instructions
-        if any(meat in ' '.join(ingredients).lower() for meat in ['chicken', 'pork', 'beef', 'fish']):
-            if not any(word in instructions.lower() for word in ['cook until', 'internal temperature', 'fully cooked']):
-                warnings.append("Consider adding internal temperature guidance for meat safety")
-                safety_score -= 10
-        
-        # Check for allergen warnings
-        common_allergens = ['nuts', 'peanuts', 'shellfish', 'eggs', 'dairy', 'wheat', 'soy']
-        allergens_present = []
-        for allergen in common_allergens:
-            if any(allergen in ing.lower() for ing in ingredients):
-                allergens_present.append(allergen)
-        
-        if allergens_present:
-            warnings.append(f"Contains common allergens: {', '.join(allergens_present)}")
-        
-        return {
-            'safety_score': max(safety_score, 0),
-            'warnings': warnings,
-            'allergens': allergens_present,
-            'safe_for_preparation': safety_score >= 70
-        }
-    
-    def get_nutritional_estimate(self, ingredients: List[str], servings: int = 4) -> Dict[str, Any]:
-        """
-        Get rough nutritional estimates for recipe ingredients
-        
-        Args:
-            ingredients: Recipe ingredients
-            servings: Number of servings
-            
-        Returns:
-            Dict: Nutritional estimates per serving
-        """
-        # Simple nutritional database (calories per 100g)
-        nutrition_db = {
-            'chicken': {'calories': 165, 'protein': 25, 'carbs': 0, 'fat': 7},
-            'beef': {'calories': 250, 'protein': 22, 'carbs': 0, 'fat': 17},
-            'fish': {'calories': 140, 'protein': 25, 'carbs': 0, 'fat': 3},
-            'rice': {'calories': 130, 'protein': 3, 'carbs': 28, 'fat': 0.3},
-            'pasta': {'calories': 220, 'protein': 8, 'carbs': 44, 'fat': 1.5},
-            'potatoes': {'calories': 77, 'protein': 2, 'carbs': 17, 'fat': 0.1},
-            'tomatoes': {'calories': 18, 'protein': 1, 'carbs': 4, 'fat': 0.2},
-            'onions': {'calories': 40, 'protein': 1, 'carbs': 9, 'fat': 0.1},
-            'oil': {'calories': 884, 'protein': 0, 'carbs': 0, 'fat': 100},
-            'butter': {'calories': 717, 'protein': 1, 'carbs': 1, 'fat': 81}
-        }
-        
-        total_nutrition = {'calories': 0, 'protein': 0, 'carbs': 0, 'fat': 0}
-        
-        for ingredient in ingredients:
-            # Simple matching - look for key ingredients
-            for key, nutrition in nutrition_db.items():
-                if key in ingredient.lower():
-                    # Assume 100g per main ingredient, 50g for vegetables, 20g for seasonings
-                    portion = 100 if key in ['chicken', 'beef', 'fish', 'rice', 'pasta'] else 50
-                    if key in ['oil', 'butter']:
-                        portion = 20
-                    
-                    for nutrient in total_nutrition:
-                        total_nutrition[nutrient] += nutrition[nutrient] * (portion / 100)
-                    break
-        
-        # Calculate per serving
-        per_serving = {
-            nutrient: round(value / servings, 1) 
-            for nutrient, value in total_nutrition.items()
-        }
-        
-        return {
-            'per_serving': per_serving,
-            'total_recipe': total_nutrition,
-            'servings': servings,
-            'note': 'Estimates based on common ingredient values. Actual nutrition may vary.'
-        }
 
 # Export the main service class
 __all__ = ['AIRecipeService', 'RecipeSuggestion']

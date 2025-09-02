@@ -21,7 +21,7 @@ from contextlib import contextmanager
 import json
 
 # Import custom modules
-from recipe_recommender.backend.configg import Config
+from config import Config
 from database import init_db, get_db_connection
 from services.ai_service import AIRecipeService
 from services.recipe_service import RecipeService
@@ -67,7 +67,7 @@ def create_app():
         logger.info("Database initialized successfully")
     
     # Initialize services
-    app.ai_service = AIRecipeService(app.config['OPENAI_API_KEY'])
+    app.ai_service = AIRecipeService(app.config['GEMINI_API_KEY'])
     app.recipe_service = RecipeService()
     app.pantry_service = PantryService()
     
