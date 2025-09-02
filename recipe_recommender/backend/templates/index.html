@@ -12,6 +12,7 @@
     <!-- Custom Tailwind Configuration -->
     <script>
         tailwind.config = {
+            darkMode: 'class', // ENABLE DARK MODE
             theme: {
                 extend: {
                     colors: {
@@ -85,15 +86,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
-<body class="bg-gradient-to-br from-orange-50 via-white to-green-50 min-h-screen font-body">
+<body class="bg-gradient-to-br from-orange-50 via-white to-green-50 min-h-screen font-body dark:bg-gradient-to-br dark:from-gray-950 dark:via-gray-900 dark:to-gray-800 dark:text-gray-100">
     <!-- Navigation Header -->
-    <nav class="bg-white/80 backdrop-blur-lg border-b border-orange-100 sticky top-0 z-50">
+    <nav class="bg-white/80 backdrop-blur-lg border-b border-orange-100 sticky top-0 z-50 dark:bg-gray-900/90 dark:border-gray-700 dark:text-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center space-x-3">
                     <div class="text-3xl animate-bounce-subtle">🍽️</div>
-                    <h1 class="text-xl font-bold text-gray-900">Recipe Recommender</h1>
-                    <span class="hidden sm:inline-block px-2 py-1 bg-primary-100 text-primary-700 text-xs rounded-full font-medium">
+                    <h1 class="text-xl font-bold text-gray-900 dark:text-white">Recipe Recommender</h1>
+                    <span class="hidden sm:inline-block px-2 py-1 bg-primary-100 text-primary-700 dark:bg-primary-900 dark:text-primary-200 text-xs rounded-full font-medium">
                         AI-Powered
                     </span>
                 </div>
@@ -105,7 +106,7 @@
                         <span class="hidden sm:inline">Pantry</span>
                     </button>
                     
-                    <button id="themeToggle" class="p-2 text-gray-600 hover:text-gray-900 transition-colors duration-200">
+                    <button id="themeToggle" class="p-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-200">
                         <span class="text-xl">🌙</span>
                     </button>
                 </div>
@@ -119,28 +120,28 @@
         <section class="text-center mb-12 animate-fade-in">
             <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
                 Turn Your Ingredients Into
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-500 to-sudanese-500">
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-500 to-sudanese-500 dark:bg-gradient-to-r dark:from-yellow-700 dark:via-primary-400 dark:to-green-700">
                     Delicious Meals
                 </span>
             </h2>
-            <p class="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+            <p class="text-xl text-gray-600 dark:text-gray-800 mb-8 max-w-3xl mx-auto dark:text-gray-800">
                 AI-powered recipe suggestions with cultural diversity and sustainability focus. 
                 Featuring authentic Sudanese cuisine alongside global favorites.
             </p>
-            
             <!-- Zero Hunger Badge -->
-            <div class="inline-flex items-center space-x-2 bg-gradient-to-r from-green-500 to-blue-500 text-white px-4 py-2 rounded-full text-sm font-medium mb-8">
+            <div class="inline-flex items-center space-x-2 bg-gradient-to-r from-green-500 to-blue-500 text-white px-4 py-2 rounded-full text-sm font-medium mb-8
+                dark:bg-gradient-to-r dark:from-green-700 dark:to-blue-800">
                 <span>🎯</span>
                 <span>Supporting UN SDG 2: Zero Hunger</span>
             </div>
         </section>
 
         <!-- Recipe Search Section -->
-        <section class="bg-white rounded-2xl shadow-xl p-8 mb-12 border border-orange-100">
+        <section class="bg-white rounded-2xl shadow-xl p-8 mb-12 border border-orange-100 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-100">
             <div class="max-w-4xl mx-auto">
                 <!-- Ingredient Input -->
                 <div class="mb-6">
-                    <label for="ingredientInput" class="block text-lg font-semibold text-gray-900 mb-3">
+                    <label for="ingredientInput" class="block text-lg font-semibold text-gray-900 dark:text-gray-100 mb-3">
                         What ingredients do you have? 🥕
                     </label>
                     <div class="relative">
@@ -148,10 +149,10 @@
                             type="text" 
                             id="ingredientInput" 
                             placeholder="Type ingredients (e.g., chicken, tomatoes, onions)..."
-                            class="w-full px-6 py-4 text-lg border-2 border-gray-200 rounded-xl focus:border-primary-500 focus:ring-4 focus:ring-primary-100 transition-all duration-200 outline-none"
+                            class="w-full px-6 py-4 text-lg border-2 border-gray-200 dark:bg-gray-800 dark:text-gray-100 dark:border-gray-700 rounded-xl focus:border-primary-500 focus:ring-4 focus:ring-primary-100 dark:focus:border-primary-400 dark:focus:ring-primary-900 transition-all duration-200 outline-none"
                             autocomplete="off"
                         >
-                        <button id="addIngredientBtn" class="absolute right-3 top-1/2 transform -translate-y-1/2 bg-primary-500 text-white px-4 py-2 rounded-lg hover:bg-primary-600 transition-colors duration-200">
+                        <button id="addIngredientBtn" class="absolute right-3 top-1/2 transform -translate-y-1/2 bg-primary-500 text-white px-4 py-2 rounded-lg hover:bg-primary-600 transition-colors duration-200 dark:bg-primary-600 dark:hover:bg-primary-500">
                             Add
                         </button>
                     </div>
@@ -169,8 +170,8 @@
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
                     <!-- Cuisine Preference -->
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Cuisine Style</label>
-                        <select id="cuisineSelect" class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:border-primary-500 focus:ring-2 focus:ring-primary-100 transition-all duration-200">
+                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">Cuisine Style</label>
+                        <select id="cuisineSelect" class="w-full px-4 py-3 border border-gray-200 dark:bg-gray-800 dark:text-gray-100 dark:border-gray-700 rounded-lg focus:border-primary-500 focus:ring-2 focus:ring-primary-100 dark:focus:border-primary-400 dark:focus:ring-primary-900 transition-all duration-200">
                             <option value="any">Any Cuisine</option>
                             <option value="sudanese">🇸🇩 Sudanese</option>
                             <option value="global">🌍 Global</option>
@@ -183,8 +184,8 @@
 
                     <!-- Difficulty Level -->
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Difficulty Level</label>
-                        <select id="difficultySelect" class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:border-primary-500 focus:ring-2 focus:ring-primary-100 transition-all duration-200">
+                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">Difficulty Level</label>
+                        <select id="difficultySelect" class="w-full px-4 py-3 border border-gray-200 dark:bg-gray-800 dark:text-gray-100 dark:border-gray-700 rounded-lg focus:border-primary-500 focus:ring-2 focus:ring-primary-100 dark:focus:border-primary-400 dark:focus:ring-primary-900 transition-all duration-200">
                             <option value="1">🟢 Very Easy</option>
                             <option value="2">🟡 Easy</option>
                             <option value="3" selected>🟠 Medium</option>
@@ -195,8 +196,8 @@
 
                     <!-- Max Cooking Time -->
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Max Time (minutes)</label>
-                        <select id="maxTimeSelect" class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:border-primary-500 focus:ring-2 focus:ring-primary-100 transition-all duration-200">
+                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">Max Time (minutes)</label>
+                        <select id="maxTimeSelect" class="w-full px-4 py-3 border border-gray-200 dark:bg-gray-800 dark:text-gray-100 dark:border-gray-700 rounded-lg focus:border-primary-500 focus:ring-2 focus:ring-primary-100 dark:focus:border-primary-400 dark:focus:ring-primary-900 transition-all duration-200">
                             <option value="15">⚡ 15 min</option>
                             <option value="30">🕐 30 min</option>
                             <option value="60" selected>🕑 1 hour</option>
@@ -208,34 +209,34 @@
 
                 <!-- Dietary Restrictions -->
                 <div class="mb-6">
-                    <label class="block text-sm font-medium text-gray-700 mb-3">Dietary Preferences</label>
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-3">Dietary Preferences</label>
                     <div class="flex flex-wrap gap-3">
                         <label class="flex items-center space-x-2 cursor-pointer">
-                            <input type="checkbox" value="vegetarian" class="dietary-checkbox rounded text-primary-500 focus:ring-primary-500">
-                            <span class="text-sm">🌱 Vegetarian</span>
+                            <input type="checkbox" value="vegetarian" class="dietary-checkbox rounded text-primary-500 dark:bg-gray-800 dark:border-gray-700 focus:ring-primary-500">
+                            <span class="text-sm dark:text-gray-200">🌱 Vegetarian</span>
                         </label>
                         <label class="flex items-center space-x-2 cursor-pointer">
-                            <input type="checkbox" value="vegan" class="dietary-checkbox rounded text-primary-500 focus:ring-primary-500">
-                            <span class="text-sm">🌿 Vegan</span>
+                            <input type="checkbox" value="vegan" class="dietary-checkbox rounded text-primary-500 dark:bg-gray-800 dark:border-gray-700 focus:ring-primary-500">
+                            <span class="text-sm dark:text-gray-200">🌿 Vegan</span>
                         </label>
                         <label class="flex items-center space-x-2 cursor-pointer">
-                            <input type="checkbox" value="gluten-free" class="dietary-checkbox rounded text-primary-500 focus:ring-primary-500">
-                            <span class="text-sm">🌾 Gluten-Free</span>
+                            <input type="checkbox" value="gluten-free" class="dietary-checkbox rounded text-primary-500 dark:bg-gray-800 dark:border-gray-700 focus:ring-primary-500">
+                            <span class="text-sm dark:text-gray-200">🌾 Gluten-Free</span>
                         </label>
                         <label class="flex items-center space-x-2 cursor-pointer">
-                            <input type="checkbox" value="dairy-free" class="dietary-checkbox rounded text-primary-500 focus:ring-primary-500">
-                            <span class="text-sm">🥛 Dairy-Free</span>
+                            <input type="checkbox" value="dairy-free" class="dietary-checkbox rounded text-primary-500 dark:bg-gray-800 dark:border-gray-700 focus:ring-primary-500">
+                            <span class="text-sm dark:text-gray-200">🥛 Dairy-Free</span>
                         </label>
                         <label class="flex items-center space-x-2 cursor-pointer">
-                            <input type="checkbox" value="low-carb" class="dietary-checkbox rounded text-primary-500 focus:ring-primary-500">
-                            <span class="text-sm">🥗 Low-Carb</span>
+                            <input type="checkbox" value="low-carb" class="dietary-checkbox rounded text-primary-500 dark:bg-gray-800 dark:border-gray-700 focus:ring-primary-500">
+                            <span class="text-sm dark:text-gray-200">🥗 Low-Carb</span>
                         </label>
                     </div>
                 </div>
 
                 <!-- Search Button -->
                 <div class="text-center">
-                    <button id="searchRecipesBtn" class="bg-gradient-to-r from-primary-500 to-primary-600 text-white px-8 py-4 rounded-xl text-lg font-semibold hover:from-primary-600 hover:to-primary-700 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none">
+                    <button id="searchRecipesBtn" class="bg-gradient-to-r from-primary-500 to-primary-600 dark:from-primary-700 dark:to-primary-900 text-white px-8 py-4 rounded-xl text-lg font-semibold hover:from-primary-600 hover:to-primary-700 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none">
                         <span id="searchBtnText">🔍 Find Amazing Recipes</span>
                         <div id="searchSpinner" class="hidden inline-flex items-center">
                             <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -250,10 +251,10 @@
         </section>
 
         <!-- Recipe Results Section -->
-        <section id="recipeResults" class="hidden">
+        <section id="recipeResults" class="hidden bg-white dark:bg-gray-800 rounded-2xl shadow p-6">
             <div class="flex justify-between items-center mb-6">
-                <h3 class="text-2xl font-bold text-gray-900">Recipe Suggestions</h3>
-                <div id="resultStats" class="text-sm text-gray-600"></div>
+                <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Recipe Suggestions</h3>
+                <div id="resultStats" class="text-sm text-gray-600 dark:text-gray-300"></div>
             </div>
             
             <div id="recipeGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
@@ -262,21 +263,21 @@
             
             <!-- Load More Button -->
             <div class="text-center">
-                <button id="loadMoreBtn" class="hidden px-6 py-3 border border-primary-500 text-primary-500 rounded-lg hover:bg-primary-50 transition-colors duration-200">
+                <button id="loadMoreBtn" class="hidden px-6 py-3 border border-primary-500 text-primary-500 dark:border-primary-200 dark:text-primary-200 rounded-lg hover:bg-primary-50 dark:hover:bg-primary-900 transition-colors duration-200">
                     Load More Recipes
                 </button>
             </div>
         </section>
 
         <!-- Pantry Management Modal -->
-        <div id="pantryModal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-            <div class="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-                <div class="p-6 border-b border-gray-200">
+        <div id="pantryModal" class="hidden fixed inset-0 bg-black bg-opacity-60 dark:bg-opacity-80 z-50 flex items-center justify-center p-4">
+            <div class="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto dark:bg-gray-800 dark:text-gray-100">
+                <div class="p-6 border-b border-gray-200 dark:border-gray-700">
                     <div class="flex justify-between items-center">
-                        <h3 class="text-xl font-bold text-gray-900">🛒 My Pantry</h3>
-                        <button id="closePantryBtn" class="text-gray-400 hover:text-gray-600 text-2xl">&times;</button>
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white">🛒 My Pantry</h3>
+                        <button id="closePantryBtn" class="text-gray-400 hover:text-gray-600 dark:text-gray-300 dark:hover:text-gray-100 text-2xl">&times;</button>
                     </div>
-                    <p class="text-gray-600 mt-2">Manage ingredients you frequently cook with</p>
+                    <p class="text-gray-600 dark:text-gray-300 mt-2">Manage ingredients you frequently cook with</p>
                 </div>
                 
                 <div class="p-6">
@@ -287,9 +288,9 @@
                                 type="text" 
                                 id="pantryItemInput" 
                                 placeholder="Add ingredient to pantry..."
-                                class="flex-1 px-4 py-2 border border-gray-200 rounded-lg focus:border-sudanese-500 focus:ring-2 focus:ring-sudanese-100 transition-all duration-200"
+                                class="flex-1 px-4 py-2 border border-gray-200 dark:bg-gray-800 dark:text-gray-100 dark:border-gray-700 rounded-lg focus:border-sudanese-500 focus:ring-2 focus:ring-sudanese-100 dark:focus:border-sudanese-400 dark:focus:ring-sudanese-900 transition-all duration-200"
                             >
-                            <button id="addToPantryBtn" class="px-4 py-2 bg-sudanese-500 text-white rounded-lg hover:bg-sudanese-600 transition-colors duration-200">
+                            <button id="addToPantryBtn" class="px-4 py-2 bg-sudanese-500 text-white rounded-lg hover:bg-sudanese-600 dark:bg-sudanese-700 dark:hover:bg-sudanese-500 transition-colors duration-200">
                                 Add
                             </button>
                         </div>
@@ -302,7 +303,7 @@
                     
                     <!-- Quick Add Common Ingredients -->
                     <div class="mt-6">
-                        <h4 class="text-sm font-medium text-gray-700 mb-3">Quick Add Common Ingredients:</h4>
+                        <h4 class="text-sm font-medium text-gray-700 dark:text-gray-200 mb-3">Quick Add Common Ingredients:</h4>
                         <div class="flex flex-wrap gap-2" id="commonIngredients">
                             <!-- Common ingredient buttons will be inserted here -->
                         </div>
@@ -312,8 +313,8 @@
         </div>
 
         <!-- Recipe Detail Modal -->
-        <div id="recipeModal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-            <div class="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+        <div id="recipeModal" class="hidden fixed inset-0 bg-black bg-opacity-60 dark:bg-opacity-80 z-50 flex items-center justify-center p-4">
+            <div class="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto dark:bg-gray-800 dark:text-gray-100">
                 <div id="recipeModalContent">
                     <!-- Recipe details will be inserted here -->
                 </div>
@@ -322,37 +323,37 @@
     </main>
 
     <!-- Footer with Zero Hunger Badge -->
-    <footer class="bg-white border-t border-gray-200 py-8 mt-16">
+    <footer class="bg-white border-t border-gray-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-100 py-8 mt-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
                 <div class="flex items-center space-x-4">
                     <div class="text-2xl">🍽️</div>
                     <div>
-                        <h4 class="font-semibold text-gray-900">Recipe Recommender</h4>
-                        <p class="text-sm text-gray-600">AI-powered cooking assistant</p>
+                        <h4 class="font-semibold text-gray-900 dark:text-white">Recipe Recommender</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-300">AI-powered cooking assistant</p>
                     </div>
                 </div>
                 
                 <!-- Zero Hunger Initiative -->
-                <div class="flex items-center space-x-3 bg-gradient-to-r from-green-50 to-blue-50 px-4 py-2 rounded-lg border border-green-200">
-                    <div class="w-8 h-8 bg-gradient-to-r from-green-500 to-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm">
+                <div class="flex items-center space-x-3 bg-gradient-to-r from-green-50 to-blue-50 dark:from-green-900 dark:to-blue-900 px-4 py-2 rounded-lg border border-green-200 dark:border-green-700">
+                    <div class="w-8 h-8 bg-gradient-to-r from-green-500 to-blue-500 dark:from-green-400 dark:to-blue-700 rounded-full flex items-center justify-center text-white font-bold text-sm">
                         2
                     </div>
                     <div class="text-sm">
-                        <div class="font-medium text-gray-900">Supporting Zero Hunger</div>
-                        <div class="text-gray-600">UN Sustainable Development Goal #2</div>
+                        <div class="font-medium text-gray-900 dark:text-white">Supporting Zero Hunger</div>
+                        <div class="text-gray-600 dark:text-gray-300">UN Sustainable Development Goal #2</div>
                     </div>
                 </div>
             </div>
             
-            <div class="mt-6 pt-6 border-t border-gray-200 text-center text-sm text-gray-500">
+            <div class="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700 text-center text-sm text-gray-500 dark:text-gray-400">
                 <p>Reducing food waste through smart recipe recommendations • Cultural diversity through authentic cuisine</p>
             </div>
         </div>
     </footer>
 
     <!-- Success Toast Notification -->
-    <div id="successToast" class="hidden fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 animate-slide-up">
+    <div id="successToast" class="hidden fixed top-4 right-4 bg-green-500 dark:bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg z-50 animate-slide-up">
         <div class="flex items-center space-x-2">
             <span class="text-lg">✅</span>
             <span id="toastMessage">Success!</span>
@@ -360,7 +361,7 @@
     </div>
 
     <!-- Error Toast Notification -->
-    <div id="errorToast" class="hidden fixed top-4 right-4 bg-red-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 animate-slide-up">
+    <div id="errorToast" class="hidden fixed top-4 right-4 bg-red-500 dark:bg-red-600 text-white px-6 py-3 rounded-lg shadow-lg z-50 animate-slide-up">
         <div class="flex items-center space-x-2">
             <span class="text-lg">❌</span>
             <span id="errorMessage">Something went wrong!</span>
