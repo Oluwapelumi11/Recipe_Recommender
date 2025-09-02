@@ -14,12 +14,17 @@ import sys
 import logging
 from pathlib import Path
 
-# Add backend to path for imports
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'backend'))
 
+# Load .env file from project root BEFORE any config import
+from dotenv import load_dotenv
+load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), '.env'))
+# Add project root to path for imports
+sys.path.insert(0, os.path.dirname(__file__))
+# print("Current working directory:", os.getcwd())
+# print("sys.path:", sys.path)
 try:
-    from database import init_db, cleanup_old_data
-    from config import Config
+    from recipe_recommender.backend.configg import Config
+    from recipe_recommender.backend.database import init_db, cleanup_old_data
 except ImportError as e:
     print(f"Error importing modules: {e}")
     print("Make sure you're running this from the project root directory")

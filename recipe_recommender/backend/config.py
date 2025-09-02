@@ -32,11 +32,9 @@ class Config:
     # Ensure data directory exists
     os.makedirs(os.path.dirname(DATABASE_PATH), exist_ok=True)
     
-    # OpenAI API Configuration
-    OPENAI_API_KEY = os.environ.get('OPENAI_API_KEY')
-    OPENAI_MODEL = os.environ.get('OPENAI_MODEL', 'gpt-3.5-turbo')
-    OPENAI_MAX_TOKENS = int(os.environ.get('OPENAI_MAX_TOKENS', '500'))
-    OPENAI_TEMPERATURE = float(os.environ.get('OPENAI_TEMPERATURE', '0.7'))
+    # Gemini API Configuration (Google Generative AI)
+    GEMINI_API_KEY = os.environ.get('GEMINI_API_KEY')
+    GEMINI_MODEL = os.environ.get('GEMINI_MODEL', 'gemini-2.0-flash')
     
     # Rate Limiting Configuration
     RATELIMIT_STORAGE_URL = os.environ.get('RATELIMIT_STORAGE_URL', 'memory://')
@@ -85,22 +83,17 @@ class Config:
     @staticmethod
     def validate_config():
         """
-        Validate required configuration variables
-        
+        Validate required configuration variables (Gemini only)
         Raises:
-            ValueError: If required configuration is missing
+            ValueError: If required Gemini configuration is missing
         """
         required_vars = []
         
-        if not Config.OPENAI_API_KEY:
-            required_vars.append('OPENAI_API_KEY')
+        if not Config.GEMINI_API_KEY:
+            required_vars.append('GEMINI_API_KEY')
         
         if required_vars:
             raise ValueError(f"Missing required environment variables: {', '.join(required_vars)}")
-        
-        # Validate OpenAI API key format (should start with sk-)
-        if Config.OPENAI_API_KEY and not Config.OPENAI_API_KEY.startswith('sk-'):
-            raise ValueError("Invalid OpenAI API key format")
     
     @staticmethod
     def get_database_config():
@@ -118,18 +111,15 @@ class Config:
         }
     
     @staticmethod
-    def get_openai_config():
+    def get_gemini_config():
         """
-        Get OpenAI API configuration
-        
+        Get Gemini API configuration
         Returns:
-            dict: OpenAI configuration parameters
+            dict: Gemini configuration parameters
         """
         return {
-            'api_key': Config.OPENAI_API_KEY,
-            'model': Config.OPENAI_MODEL,
-            'max_tokens': Config.OPENAI_MAX_TOKENS,
-            'temperature': Config.OPENAI_TEMPERATURE,
+            'api_key': Config.GEMINI_API_KEY,
+            'model': Config.GEMINI_MODEL,
         }
 
 class DevelopmentConfig(Config):
@@ -182,8 +172,8 @@ class TestingConfig(Config):
     # Disable caching for consistent tests
     CACHE_TYPE = 'null'
     
-    # Mock OpenAI API key for testing
-    OPENAI_API_KEY = 'sk-test-key-for-testing-only'
+    # Mock Gemini API key for testing
+    GEMINI_API_KEY = 'test-gemini-api-key-for-testing-only'
 
 # Configuration factory
 config_map = {
@@ -215,7 +205,7 @@ if __name__ != '__main__':
     except ValueError as e:
         print(f"Configuration Error: {e}")
         print("Please check your environment variables:")
-        print("- OPENAI_API_KEY: Your OpenAI API key (required)")
+        print("- GEMINI_API_KEY: Your Gemini API key (required)")
         print("- DATABASE_PATH: Path to SQLite database (optional)")
         print("- SECRET_KEY: Flask secret key (recommended for production)")
         raise

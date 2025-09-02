@@ -18,7 +18,8 @@ import time
 from typing import List, Dict, Optional, Any
 import re
 from dataclasses import dataclass
-import openai
+import google.generativeai as genai
+import os
 from functools import wraps
 import hashlib
 
@@ -80,26 +81,26 @@ class AIRecipeService:
     AI-powered recipe recommendation service using OpenAI API
     """
     
-    def __init__(self, api_key: str, model: str = "gpt-3.5-turbo"):
+    def __init__(self, api_key: str = None, model: str = "gemini-pro"):
         """
-        Initialize AI service with OpenAI configuration
-        
+        Initialize AI service with Gemini configuration
         Args:
-            api_key (str): OpenAI API key
-            model (str): OpenAI model to use
+            api_key (str): Gemini API key (optional, will use env if not provided)
+            model (str): Gemini model to use (default: gemini-pro)
         """
-        if not api_key or not api_key.startswith('sk-'):
-            raise ValueError("Valid OpenAI API key required")
-            
-        openai.api_key = api_key
-        self.model = model
+        # Fetch Gemini API key from env if not provided
+        self.api_key = api_key or os.getenv("GEMINI_API_KEY")
+        if not self.api_key:
+            raise ValueError("Valid Gemini API key required. Set GEMINI_API_KEY in your environment.")
+        genai.configure(api_key=self.api_key)
+        self.model = model  # Typically "gemini-pro" or similar
         self.rate_limiter = RateLimiter(max_calls_per_minute=15)  # Conservative limit
-        
+
         # Cache for repeated queries (simple in-memory cache)
         self._cache = {}
         self._cache_max_size = 100
-        
-        logger.info(f"AI Recipe Service initialized with model: {model}")
+
+        logger.info(f"AI Recipe Service initialized with Gemini model: {model}")
     
     def _generate_cache_key(self, ingredients: List[str], cuisine: str, dietary: List[str]) -> str:
         """Generate cache key for request deduplication"""
@@ -196,50 +197,28 @@ Important: Respond with valid JSON only. No additional text or formatting."""
         return prompt
     
     @retry_on_failure(max_retries=2, delay=2)
-    def _call_openai_api(self, prompt: str) -> Dict[str, Any]:
+    def _call_gemini_api(self, prompt: str) -> str:
         """
-        Make rate-limited call to OpenAI API with error handling
-        
+        Make rate-limited call to Gemini API with error handling
         Args:
             prompt (str): Recipe generation prompt
-            
         Returns:
-            Dict: OpenAI API response
-            
+            str: Gemini model text response
         Raises:
             Exception: If API call fails after retries
         """
         self.rate_limiter.wait_if_needed()
-        
         try:
-            response = openai.ChatCompletion.create(
-                model=self.model,
-                messages=[
-                    {"role": "system", "content": "You are a professional chef and recipe expert. Always respond with valid JSON."},
-                    {"role": "user", "content": prompt}
-                ],
-                max_tokens=800,  # Limit tokens to control costs
-                temperature=0.7,  # Balance creativity and consistency
-                timeout=30  # 30 second timeout
-            )
-            
-            return response
-            
-        except openai.error.RateLimitError as e:
-            logger.warning(f"OpenAI rate limit exceeded: {e}")
-            time.sleep(60)  # Wait 1 minute for rate limit reset
-            raise
-            
-        except openai.error.AuthenticationError as e:
-            logger.error(f"OpenAI authentication failed: {e}")
-            raise ValueError("Invalid OpenAI API key")
-            
-        except openai.error.APIError as e:
-            logger.error(f"OpenAI API error: {e}")
-            raise
-            
+            model = genai.GenerativeModel(self.model)
+            response = model.generate_content(prompt)
+            if hasattr(response, 'text'):
+                return response.text
+            elif response.parts:
+                return ''.join([str(part.text) for part in response.parts if hasattr(part, 'text')])
+            else:
+                raise ValueError("No valid response from Gemini API.")
         except Exception as e:
-            logger.error(f"Unexpected error calling OpenAI: {e}")
+            logger.error(f"Error calling Gemini API: {e}")
             raise
     
     def _parse_ai_response(self, response_text: str) -> List[RecipeSuggestion]:
@@ -341,11 +320,11 @@ Important: Respond with valid JSON only. No additional text or formatting."""
             prompt = self._create_recipe_prompt(ingredients, cuisine_preference, dietary_restrictions, difficulty)
             
             logger.info(f"Requesting AI recipe suggestions for: {ingredients}")
-            response = self._call_openai_api(prompt)
-            
+            response_text = self._call_gemini_api(prompt)
+
             # Parse response
-            suggestions = self._parse_ai_response(response.choices[0].message.content)
-            
+            suggestions = self._parse_ai_response(response_text)
+
             # Cache successful results
             if suggestions:
                 self._cache_result(cache_key, suggestions)
@@ -465,8 +444,8 @@ Consider:
 Respond with JSON only:
 {{"substitutions": ["substitute1", "substitute2", ...]}}"""
 
-            response = self._call_openai_api(prompt)
-            result = json.loads(response.choices[0].message.content)
+            response_text = self._call_gemini_api(prompt)
+            result = json.loads(response_text)
             return result.get('substitutions', [])
             
         except Exception as e:
@@ -551,8 +530,8 @@ Focus on:
 Respond with JSON only:
 {{"tips": ["tip1", "tip2", "tip3", ...]}}"""
 
-            response = self._call_openai_api(prompt)
-            result = json.loads(response.choices[0].message.content)
+            response_text = self._call_gemini_api(prompt)
+            result = json.loads(response_text)
             return result.get('tips', [])
             
         except Exception as e:

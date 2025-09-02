@@ -13,6 +13,10 @@ Usage:
 import os
 import sys
 from pathlib import Path
+from dotenv import load_dotenv
+
+# Load .env file from project root BEFORE any config import
+load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), '.env'))
 
 # Add backend directory to Python path
 backend_path = Path(__file__).parent / 'backend'

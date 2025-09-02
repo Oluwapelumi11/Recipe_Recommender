@@ -21,7 +21,7 @@ from contextlib import contextmanager
 import json
 
 # Import custom modules
-from config import Config
+from recipe_recommender.backend.configg import Config
 from database import init_db, get_db_connection
 from services.ai_service import AIRecipeService
 from services.recipe_service import RecipeService
@@ -162,7 +162,7 @@ def create_app():
             max_cook_time = data.get('max_cook_time', 60)
             
             # Create cache key for performance optimization
-            cache_key = f"recipes_{hash(str(sorted(ingredients)))_{cuisine_preference}_{difficulty}_{max_cook_time}"
+            cache_key = f"recipes_{hash(str(sorted(ingredients)))}_{cuisine_preference}_{difficulty}_{max_cook_time}"
             
             # Try to get cached results first
             cached_result = app.cache.get(cache_key)
